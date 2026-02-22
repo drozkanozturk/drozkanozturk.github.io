@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dr. Özkan Öztürk | Mathematics</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Serif+4:ital,wght@0,300;0,400;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --navy:       #0a0f1e;
+      --navy-mid:   #111827;
+      --navy-light: #1e2d45;
+      --gold:       #c9a84c;
+      --gold-light: #e8c97a;
+      --cream:      #f0ead8;
+      --cream-dim:  #c8bfa8;
+      --steel:      #8294a8;
+      --white:      #ffffff;
+      --border:     rgba(201,168,76,0.25);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--navy);
+      color: var(--cream);
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-weight: 300;
+      line-height: 1.75;
+      overflow-x: hidden;
+    }
+
+    /* ── NOISE TEXTURE OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.4;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 4rem;
+      background: rgba(10,15,30,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--gold);
+      letter-spacing: 0.05em;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--steel);
+      text-decoration: none;
+      transition: color 0.25s;
+    }
+
+    .nav-links a:hover { color: var(--gold-light); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 8rem 4rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #hero::after {
+      content: 'Δ';
+      position: absolute;
+      right: -2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 32rem;
+      color: rgba(201,168,76,0.03);
+      font-family: 'Playfair Display', serif;
+      pointer-events: none;
+      line-height: 1;
+    }
+
+    .hero-text { padding-right: 4rem; }
+
+    .hero-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.2s forwards;
+    }
+
+    .hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 5vw, 4.5rem);
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.4s forwards;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--gold-light);
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.6s forwards;
+    }
+
+    .hero-affil {
+      font-size: 0.9rem;
+      color: var(--steel);
+      margin-bottom: 0.4rem;
+      line-height: 1.5;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.7s forwards;
+    }
+
+    .hero-affil a {
+      color: var(--cream-dim);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border);
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .hero-affil a:hover { color: var(--gold-light); border-color: var(--gold); }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2.5rem;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.9s forwards;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.8rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: all 0.25s;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--navy);
+      font-weight: 500;
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+    .btn-outline {
+      border: 1px solid var(--border);
+      color: var(--cream-dim);
+    }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold-light); transform: translateY(-2px); }
+
+    /* Social icons */
+    .hero-social {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 1s forwards;
+    }
+
+    .social-link {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--steel);
+      text-decoration: none;
+      border: 1px solid rgba(130,148,168,0.2);
+      padding: 0.4rem 0.8rem;
+      border-radius: 2px;
+      transition: all 0.2s;
+    }
+    .social-link:hover { color: var(--gold-light); border-color: var(--gold); }
+
+    /* Hero right — research focus cards */
+    .hero-right {
+      opacity: 0;
+      animation: fadeUp 0.8s 0.8s forwards;
+    }
+
+    .research-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.2rem;
+    }
+
+    .research-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 2rem;
+    }
+
+    .tag {
+      background: rgba(201,168,76,0.08);
+      border: 1px solid var(--border);
+      color: var(--cream-dim);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      padding: 0.35rem 0.8rem;
+      border-radius: 2px;
+      letter-spacing: 0.05em;
+    }
+
+    .stat-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      margin-top: 2rem;
+    }
+
+    .stat {
+      background: var(--navy-mid);
+      padding: 1.5rem 1rem;
+      text-align: center;
+    }
+
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: var(--gold);
+      display: block;
+    }
+
+    .stat-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--steel);
+      display: block;
+      margin-top: 0.25rem;
+    }
+
+    /* ── DIVIDER ── */
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 0 4rem;
+      opacity: 0.3;
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: 6rem 4rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 1.5rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .section-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--gold);
+      letter-spacing: 0.1em;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--white);
+    }
+
+    .section-line {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── ABOUT ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .about-text p {
+      margin-bottom: 1.2rem;
+      color: var(--cream-dim);
+      font-size: 1.0rem;
+    }
+
+    .edu-block {
+      background: var(--navy-mid);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--gold);
+      padding: 1.5rem;
+    }
+
+    .edu-block h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.85rem;
+      color: var(--gold);
+      letter-spacing: 0.05em;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+    }
+
+    .edu-item {
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(201,168,76,0.1);
+    }
+    .edu-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+    .edu-degree {
+      font-family: 'Source Serif 4', serif;
+      font-size: 0.85rem;
+      color: var(--cream);
+      display: block;
+    }
+    .edu-school {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--steel);
+      letter-spacing: 0.05em;
+    }
+
+    /* ── NEWS ── */
+    .news-list { display: flex; flex-direction: column; gap: 0; }
+
+    .news-item {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 2rem;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid rgba(201,168,76,0.1);
+      transition: background 0.2s;
+    }
+    .news-item:first-child { border-top: 1px solid rgba(201,168,76,0.1); }
+
+    .news-date {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--gold);
+      letter-spacing: 0.08em;
+      padding-top: 0.2rem;
+      line-height: 1.4;
+    }
+
+    .news-content { font-size: 0.92rem; color: var(--cream-dim); }
+    .news-content a { color: var(--gold-light); text-decoration: none; border-bottom: 1px solid var(--border); }
+    .news-content a:hover { border-color: var(--gold); }
+
+    /* ── PUBLICATIONS ── */
+    .pub-item {
+      background: var(--navy-mid);
+      border: 1px solid var(--border);
+      padding: 1.8rem 2rem;
+      margin-bottom: 1rem;
+      position: relative;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .pub-item:hover { border-color: var(--gold); transform: translateX(4px); }
+
+    .pub-year {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--gold);
+      letter-spacing: 0.15em;
+      margin-bottom: 0.5rem;
+    }
+
+    .pub-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      color: var(--white);
+      margin-bottom: 0.4rem;
+      font-style: italic;
+    }
+    .pub-title a { color: inherit; text-decoration: none; }
+    .pub-title a:hover { color: var(--gold-light); }
+
+    .pub-journal {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--steel);
+      letter-spacing: 0.05em;
+    }
+
+    /* ── TEACHING ── */
+    .teaching-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .course-card {
+      background: var(--navy-mid);
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      transition: border-color 0.2s;
+    }
+    .course-card:hover { border-color: var(--gold); }
+
+    .course-code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--gold);
+      letter-spacing: 0.15em;
+      margin-bottom: 0.5rem;
+    }
+
+    .course-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      color: var(--white);
+      margin-bottom: 0.3rem;
+    }
+
+    .course-level {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.62rem;
+      color: var(--steel);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* ── CONTACT ── */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+
+    .contact-info p {
+      color: var(--cream-dim);
+      margin-bottom: 0.5rem;
+      font-size: 0.95rem;
+    }
+    .contact-info a { color: var(--gold-light); text-decoration: none; }
+    .contact-info a:hover { text-decoration: underline; }
+
+    .contact-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.3rem;
+      margin-top: 1.2rem;
+      display: block;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 2.5rem;
+      border-top: 1px solid var(--border);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      color: var(--steel);
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1.2rem; }
+      #hero { grid-template-columns: 1fr; padding: 7rem 1.5rem 3rem; }
+      #hero::after { display: none; }
+      .hero-text { padding-right: 0; margin-bottom: 3rem; }
+      section { padding: 4rem 1.5rem; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; }
+      .section-divider { margin: 0 1.5rem; }
+      .news-item { grid-template-columns: 1fr; gap: 0.3rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#hero">Dr. Özkan Öztürk</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#news">News</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#teaching">Teaching</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div id="hero">
+  <div class="hero-text">
+    <p class="hero-eyebrow">Full Professor · Mathematics</p>
+    <h1 class="hero-name">Dr. Özkan<br>Öztürk</h1>
+    <p class="hero-title">Department of Mathematics, Faculty of Arts and Sciences</p>
+    <p class="hero-affil">Giresun University · Giresun, Türkiye</p>
+    <p class="hero-affil">Missouri University of Science &amp; Technology · Ph.D. Mathematics</p>
+
+    <div class="hero-buttons">
+      <a class="btn btn-primary" href="https://drive.google.com/file/d/1ewHPlaHvi_uXTkXT2nuZLUiHQP9X-WCs/view?usp=sharing" target="_blank">Download CV</a>
+      <a class="btn btn-outline" href="#publications">Publications</a>
+      <a class="btn btn-outline" href="#contact">Contact</a>
+    </div>
+
+    <div class="hero-social">
+      <a class="social-link" href="https://scholar.google.com/citations?hl=en&user=UpbBI10AAAAJ" target="_blank">Scholar</a>
+      <a class="social-link" href="https://orcid.org/0000-0001-6657-7409" target="_blank">ORCID</a>
+      <a class="social-link" href="https://www.researchgate.net/profile/Ozkan-Ozturk-2" target="_blank">ResearchGate</a>
+      <a class="social-link" href="https://www.linkedin.com/in/drozkanozturk" target="_blank">LinkedIn</a>
+      <a class="social-link" href="https://www.youtube.com/@drozkanozturk" target="_blank">YouTube</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <p class="research-label">Research Areas</p>
+    <div class="research-tags">
+      <span class="tag">Differential Equations</span>
+      <span class="tag">Difference Equations</span>
+      <span class="tag">Time Scales Theory</span>
+      <span class="tag">Oscillation Theory</span>
+      <span class="tag">Control Theory</span>
+      <span class="tag">Mathematical Biology</span>
+      <span class="tag">Infectious Disease Modeling</span>
+      <span class="tag">UAV/UGV Control</span>
+      <span class="tag">Dynamic Systems</span>
+    </div>
+
+    <div class="stat-row">
+      <div class="stat">
+        <span class="stat-num">50+</span>
+        <span class="stat-label">Publications</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">2025</span>
+        <span class="stat-label">Full Prof.</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">20+</span>
+        <span class="stat-label">Conferences</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-header">
+    <span class="section-num">01</span>
+    <h2 class="section-title">About</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I am a Full Professor in the Department of Mathematics at Giresun University, a position I have held since May 2025. I earned my M.S. in Applied Mathematics and my Ph.D. in Mathematics from Missouri University of Science and Technology. In addition, I completed a second M.S. degree in Electrical Engineering at Missouri S&amp;T in May 2016.</p>
+      <p>My current research focuses on differential and difference equations and time scales theory, with applications in biology and engineering, particularly in control theory and the oscillatory behavior of linear and nonlinear dynamic equations. The calculus of time scales was developed to unify and extend results for both differential and difference equations, providing a comprehensive framework for dynamic systems.</p>
+      <p>In the biological sciences, my work has explored the mathematical modeling of infectious diseases, including monkeypox, HIV, tuberculosis and HPV. In engineering applications, I have been investigating control strategies for unmanned aerial and ground vehicles, integrating theoretical advances with practical problem-solving.</p>
+    </div>
+
+    <div>
+      <div class="edu-block">
+        <h4>Education</h4>
+        <div class="edu-item">
+          <span class="edu-degree">Ph.D. in Mathematics</span>
+          <span class="edu-school">Missouri University of Science &amp; Technology</span>
+        </div>
+        <div class="edu-item">
+          <span class="edu-degree">M.S. in Applied Mathematics</span>
+          <span class="edu-school">Missouri University of Science &amp; Technology</span>
+        </div>
+        <div class="edu-item">
+          <span class="edu-degree">M.S. in Electrical Engineering</span>
+          <span class="edu-school">Missouri S&amp;T · May 2016</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- NEWS -->
+<section id="news">
+  <div class="section-header">
+    <span class="section-num">02</span>
+    <h2 class="section-title">News &amp; Events</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="news-list">
+    <div class="news-item">
+      <span class="news-date">Dec 8, 2025</span>
+      <p class="news-content">The Department of Mathematics at Giresun University hosted Dr. Elif Öztürk Beigmohammadi from Norway. Dr. Öztürk delivered a presentation titled "Modelling of Mineral Efficiency in Geothermal."</p>
+    </div>
+    <div class="news-item">
+      <span class="news-date">Nov 20, 2025</span>
+      <p class="news-content">The Department hosted Dr. Neslihan Nesliye Pelen from the University of South Florida. Presentation: "Global Periodic Behavior in an HPA Axis Model with Time-Dependent Stress Input."</p>
+    </div>
+    <div class="news-item">
+      <span class="news-date">Oct 20, 2025</span>
+      <p class="news-content">The Department hosted Dr. Nick Wintz from Rashford University (USA). Presentation: "The Conformable Kalman Filter."</p>
+    </div>
+    <div class="news-item">
+      <span class="news-date">Oct 13, 2025</span>
+      <p class="news-content">The Department hosted Dr. Tom Cuchta from Marshall University (USA). Presentation: "Dynamic Special Functions."</p>
+    </div>
+    <div class="news-item">
+      <span class="news-date">Sep 19, 2025</span>
+      <p class="news-content">Our article <a href="https://journals.tubitak.gov.tr/cgi/viewcontent.cgi?article=3610&context=math" target="_blank">"Nonoscillatory Solutions of Third-Order Nonlinear Dynamic Equations: Existence and Nonexistence"</a> published in the Turkish Journal of Mathematics.</p>
+    </div>
+    <div class="news-item">
+      <span class="news-date">May 23, 2025</span>
+      <p class="news-content">Promoted to Full Professor in the Department of Mathematics at Giresun University.</p>
+    </div>
+    <div class="news-item">
+      <span class="news-date">Jun 24, 2024</span>
+      <p class="news-content">Attended the <a href="https://icdea2024.sciencesconf.org/" target="_blank">29th International Conference on Difference Equations and Applications (ICDEA 2024)</a>, Paris, France.</p>
+    </div>
+    <div class="news-item">
+      <span class="news-date">May 14, 2022</span>
+      <p class="news-content">Article <a href="https://link.springer.com/article/10.1007/s12591-022-00603-0" target="_blank">"Almost Oscillation of a Third-Order Emden-Fowler Equation on Time Scales"</a> published in Differential Equations and Dynamical Systems.</p>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- PUBLICATIONS -->
+<section id="publications">
+  <div class="section-header">
+    <span class="section-num">03</span>
+    <h2 class="section-title">Selected Publications</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="pub-item">
+    <div class="pub-year">2025 · Turkish Journal of Mathematics</div>
+    <p class="pub-title"><a href="https://journals.tubitak.gov.tr/cgi/viewcontent.cgi?article=3610&context=math" target="_blank">Nonoscillatory Solutions of Third-Order Nonlinear Dynamic Equations: Existence and Nonexistence</a></p>
+  </div>
+
+  <div class="pub-item">
+    <div class="pub-year">2022 · Differential Equations and Dynamical Systems</div>
+    <p class="pub-title"><a href="https://link.springer.com/article/10.1007/s12591-022-00603-0" target="_blank">Almost Oscillation of a Third-Order Emden-Fowler Equation on Time Scales</a></p>
+  </div>
+
+  <div class="pub-item">
+    <div class="pub-year">2021 · Filomat</div>
+    <p class="pub-title">Oscillation of Three Dimensional Time Scale Systems with Fixed Point Theorems</p>
+  </div>
+
+  <div class="pub-item">
+    <div class="pub-year">2020 · Journal of Mathematics and Computer Science</div>
+    <p class="pub-title">Saturation Control of PVTOL Aircraft on Time Scales</p>
+  </div>
+
+  <div class="pub-item">
+    <div class="pub-year">2019 · Differential Equations and Dynamical Systems</div>
+    <p class="pub-title">Control of Wheeled Mobile Robots on Time Scales</p>
+  </div>
+
+  <div class="pub-item">
+    <div class="pub-year">2019 · Turkish Journal of Mathematics</div>
+    <p class="pub-title">On Nonoscillatory Solutions of Three Dimensional Time-Scale Systems</p>
+  </div>
+
+  <div style="margin-top:2rem;">
+    <a class="btn btn-outline" href="https://scholar.google.com/citations?hl=en&user=UpbBI10AAAAJ" target="_blank">View All on Google Scholar →</a>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- TEACHING -->
+<section id="teaching">
+  <div class="section-header">
+    <span class="section-num">04</span>
+    <h2 class="section-title">Teaching</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="teaching-grid">
+    <div class="course-card">
+      <div class="course-code">Undergraduate</div>
+      <div class="course-name">Calculus I &amp; II</div>
+      <div class="course-level">Giresun University</div>
+    </div>
+    <div class="course-card">
+      <div class="course-code">Undergraduate</div>
+      <div class="course-name">Differential Equations</div>
+      <div class="course-level">Giresun University</div>
+    </div>
+    <div class="course-card">
+      <div class="course-code">Undergraduate</div>
+      <div class="course-name">Linear Algebra</div>
+      <div class="course-level">Giresun University</div>
+    </div>
+    <div class="course-card">
+      <div class="course-code">Graduate</div>
+      <div class="course-name">Time Scales Theory</div>
+      <div class="course-level">Giresun University</div>
+    </div>
+    <div class="course-card">
+      <div class="course-code">Graduate</div>
+      <div class="course-name">Mathematical Modeling</div>
+      <div class="course-level">Giresun University</div>
+    </div>
+    <div class="course-card">
+      <div class="course-code">Graduate</div>
+      <div class="course-name">Advanced Differential Equations</div>
+      <div class="course-level">Giresun University</div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-header">
+    <span class="section-num">05</span>
+    <h2 class="section-title">Contact</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="contact-grid">
+    <div class="contact-info">
+      <span class="contact-label">Position</span>
+      <p>Full Professor, Department of Mathematics<br>Faculty of Arts and Sciences<br>Giresun University, Giresun, Türkiye</p>
+
+      <span class="contact-label">Email</span>
+      <p><a href="mailto:drozkanozturk@outlook.com">drozkanozturk@outlook.com</a></p>
+      <p><a href="mailto:ozkan.ozturk@giresun.edu.tr">ozkan.ozturk@giresun.edu.tr</a></p>
+    </div>
+
+    <div class="contact-info">
+      <span class="contact-label">Academic Profiles</span>
+      <p><a href="https://scholar.google.com/citations?hl=en&user=UpbBI10AAAAJ" target="_blank">Google Scholar</a></p>
+      <p><a href="https://orcid.org/0000-0001-6657-7409" target="_blank">ORCID: 0000-0001-6657-7409</a></p>
+      <p><a href="https://www.researchgate.net/profile/Ozkan-Ozturk-2" target="_blank">ResearchGate</a></p>
+      <p><a href="https://www.linkedin.com/in/drozkanozturk" target="_blank">LinkedIn</a></p>
+      <p><a href="https://www.youtube.com/@drozkanozturk" target="_blank">YouTube Channel</a></p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Dr. Özkan Öztürk · Department of Mathematics · Giresun University</p>
+</footer>
+
+</body>
+</html>
