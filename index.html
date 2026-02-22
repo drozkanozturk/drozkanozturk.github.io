@@ -20,7 +20,6 @@
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
 
     body {
@@ -32,7 +31,6 @@
       overflow-x: hidden;
     }
 
-    /* ── NOISE TEXTURE OVERLAY ── */
     body::before {
       content: '';
       position: fixed;
@@ -51,36 +49,40 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1.2rem 4rem;
-      background: rgba(10,15,30,0.85);
+      padding: 1.1rem 3rem;
+      background: rgba(10,15,30,0.88);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
     }
 
     .nav-logo {
       font-family: 'Playfair Display', serif;
-      font-size: 1.1rem;
+      font-size: 1rem;
       color: var(--gold);
       letter-spacing: 0.05em;
       text-decoration: none;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
 
     .nav-links {
       display: flex;
-      gap: 2.5rem;
+      gap: 1.6rem;
       list-style: none;
+      flex-wrap: wrap;
+      justify-content: flex-end;
     }
 
     .nav-links a {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.72rem;
-      letter-spacing: 0.12em;
+      font-size: 0.66rem;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--steel);
       text-decoration: none;
       transition: color 0.25s;
+      white-space: nowrap;
     }
-
     .nav-links a:hover { color: var(--gold-light); }
 
     /* ── HERO ── */
@@ -97,8 +99,7 @@
     #hero::after {
       content: 'Δ';
       position: absolute;
-      right: -2rem;
-      top: 50%;
+      right: -2rem; top: 50%;
       transform: translateY(-50%);
       font-size: 32rem;
       color: rgba(201,168,76,0.03);
@@ -111,426 +112,170 @@
 
     .hero-eyebrow {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.72rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1.5rem;
-      opacity: 0;
-      animation: fadeUp 0.8s 0.2s forwards;
+      font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1.5rem;
+      opacity: 0; animation: fadeUp 0.8s 0.2s forwards;
     }
-
     .hero-name {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(2.8rem, 5vw, 4.5rem);
-      font-weight: 700;
-      line-height: 1.1;
-      color: var(--white);
-      margin-bottom: 0.5rem;
-      opacity: 0;
-      animation: fadeUp 0.8s 0.4s forwards;
+      font-size: clamp(2.8rem, 5vw, 4.5rem); font-weight: 700; line-height: 1.1;
+      color: var(--white); margin-bottom: 0.5rem;
+      opacity: 0; animation: fadeUp 0.8s 0.4s forwards;
     }
-
     .hero-title {
       font-family: 'Playfair Display', serif;
-      font-size: 1.15rem;
-      font-weight: 400;
-      font-style: italic;
-      color: var(--gold-light);
-      margin-bottom: 2rem;
-      opacity: 0;
-      animation: fadeUp 0.8s 0.6s forwards;
+      font-size: 1.1rem; font-style: italic; color: var(--gold-light); margin-bottom: 2rem;
+      opacity: 0; animation: fadeUp 0.8s 0.6s forwards;
     }
-
     .hero-affil {
-      font-size: 0.9rem;
-      color: var(--steel);
-      margin-bottom: 0.4rem;
-      line-height: 1.5;
-      opacity: 0;
-      animation: fadeUp 0.8s 0.7s forwards;
+      font-size: 0.9rem; color: var(--steel); margin-bottom: 0.4rem; line-height: 1.5;
+      opacity: 0; animation: fadeUp 0.8s 0.7s forwards;
     }
-
-    .hero-affil a {
-      color: var(--cream-dim);
-      text-decoration: none;
-      border-bottom: 1px solid var(--border);
-      transition: color 0.2s, border-color 0.2s;
-    }
-    .hero-affil a:hover { color: var(--gold-light); border-color: var(--gold); }
-
     .hero-buttons {
-      display: flex;
-      gap: 1rem;
-      margin-top: 2.5rem;
-      flex-wrap: wrap;
-      opacity: 0;
-      animation: fadeUp 0.8s 0.9s forwards;
+      display: flex; gap: 1rem; margin-top: 2.5rem; flex-wrap: wrap;
+      opacity: 0; animation: fadeUp 0.8s 0.9s forwards;
     }
-
     .btn {
-      display: inline-block;
-      padding: 0.75rem 1.8rem;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.72rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      text-decoration: none;
-      border-radius: 2px;
-      transition: all 0.25s;
-      cursor: pointer;
+      display: inline-block; padding: 0.75rem 1.8rem;
+      font-family: 'JetBrains Mono', monospace; font-size: 0.72rem;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      text-decoration: none; border-radius: 2px; transition: all 0.25s;
     }
-
-    .btn-primary {
-      background: var(--gold);
-      color: var(--navy);
-      font-weight: 500;
-    }
+    .btn-primary { background: var(--gold); color: var(--navy); font-weight: 500; }
     .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
-
-    .btn-outline {
-      border: 1px solid var(--border);
-      color: var(--cream-dim);
-    }
+    .btn-outline { border: 1px solid var(--border); color: var(--cream-dim); }
     .btn-outline:hover { border-color: var(--gold); color: var(--gold-light); transform: translateY(-2px); }
 
-    /* Social icons */
     .hero-social {
-      display: flex;
-      gap: 1rem;
-      margin-top: 1.5rem;
-      opacity: 0;
-      animation: fadeUp 0.8s 1s forwards;
+      display: flex; gap: 0.8rem; margin-top: 1.5rem; flex-wrap: wrap;
+      opacity: 0; animation: fadeUp 0.8s 1s forwards;
     }
-
     .social-link {
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--steel);
-      text-decoration: none;
-      border: 1px solid rgba(130,148,168,0.2);
-      padding: 0.4rem 0.8rem;
-      border-radius: 2px;
-      transition: all 0.2s;
+      font-family: 'JetBrains Mono', monospace; font-size: 0.65rem;
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--steel);
+      text-decoration: none; border: 1px solid rgba(130,148,168,0.2);
+      padding: 0.4rem 0.8rem; border-radius: 2px; transition: all 0.2s;
     }
     .social-link:hover { color: var(--gold-light); border-color: var(--gold); }
 
-    /* Hero right — research focus cards */
-    .hero-right {
-      opacity: 0;
-      animation: fadeUp 0.8s 0.8s forwards;
-    }
-
+    .hero-right { opacity: 0; animation: fadeUp 0.8s 0.8s forwards; }
     .research-label {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1.2rem;
+      font-family: 'JetBrains Mono', monospace; font-size: 0.65rem;
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.2rem;
     }
-
-    .research-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-      margin-bottom: 2rem;
-    }
-
+    .research-tags { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 2rem; }
     .tag {
-      background: rgba(201,168,76,0.08);
-      border: 1px solid var(--border);
-      color: var(--cream-dim);
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.68rem;
-      padding: 0.35rem 0.8rem;
-      border-radius: 2px;
-      letter-spacing: 0.05em;
+      background: rgba(201,168,76,0.08); border: 1px solid var(--border);
+      color: var(--cream-dim); font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem; padding: 0.35rem 0.8rem; border-radius: 2px;
     }
-
     .stat-row {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-      margin-top: 2rem;
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1px; background: var(--border); border: 1px solid var(--border); margin-top: 2rem;
     }
-
-    .stat {
-      background: var(--navy-mid);
-      padding: 1.5rem 1rem;
-      text-align: center;
-    }
-
-    .stat-num {
-      font-family: 'Playfair Display', serif;
-      font-size: 2rem;
-      color: var(--gold);
-      display: block;
-    }
-
-    .stat-label {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.6rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--steel);
-      display: block;
-      margin-top: 0.25rem;
-    }
+    .stat { background: var(--navy-mid); padding: 1.5rem 1rem; text-align: center; }
+    .stat-num { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--gold); display: block; }
+    .stat-label { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--steel); display: block; margin-top: 0.25rem; }
 
     /* ── DIVIDER ── */
     .section-divider {
       height: 1px;
       background: linear-gradient(90deg, transparent, var(--gold), transparent);
-      margin: 0 4rem;
-      opacity: 0.3;
+      margin: 0 4rem; opacity: 0.3;
     }
 
     /* ── SECTIONS ── */
-    section {
-      padding: 6rem 4rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+    section { padding: 6rem 4rem; max-width: 1200px; margin: 0 auto; }
 
-    .section-header {
-      display: flex;
-      align-items: baseline;
-      gap: 1.5rem;
-      margin-bottom: 3.5rem;
-    }
-
-    .section-num {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.7rem;
-      color: var(--gold);
-      letter-spacing: 0.1em;
-    }
-
-    .section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 2rem;
-      font-weight: 600;
-      color: var(--white);
-    }
-
-    .section-line {
-      flex: 1;
-      height: 1px;
-      background: var(--border);
-    }
+    .section-header { display: flex; align-items: baseline; gap: 1.5rem; margin-bottom: 3.5rem; }
+    .section-num { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--gold); letter-spacing: 0.1em; }
+    .section-title { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 600; color: var(--white); }
+    .section-line { flex: 1; height: 1px; background: var(--border); }
 
     /* ── ABOUT ── */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 4rem;
-      align-items: start;
-    }
-
-    .about-text p {
-      margin-bottom: 1.2rem;
-      color: var(--cream-dim);
-      font-size: 1.0rem;
-    }
-
-    .edu-block {
-      background: var(--navy-mid);
-      border: 1px solid var(--border);
-      border-left: 3px solid var(--gold);
-      padding: 1.5rem;
-    }
-
-    .edu-block h4 {
-      font-family: 'Playfair Display', serif;
-      font-size: 0.85rem;
-      color: var(--gold);
-      letter-spacing: 0.05em;
-      margin-bottom: 1rem;
-      text-transform: uppercase;
-    }
-
-    .edu-item {
-      margin-bottom: 1rem;
-      padding-bottom: 1rem;
-      border-bottom: 1px solid rgba(201,168,76,0.1);
-    }
+    .about-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 4rem; align-items: start; }
+    .about-text p { margin-bottom: 1.2rem; color: var(--cream-dim); font-size: 1rem; }
+    .edu-block { background: var(--navy-mid); border: 1px solid var(--border); border-left: 3px solid var(--gold); padding: 1.5rem; }
+    .edu-block h4 { font-family: 'Playfair Display', serif; font-size: 0.85rem; color: var(--gold); letter-spacing: 0.05em; margin-bottom: 1rem; text-transform: uppercase; }
+    .edu-item { margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(201,168,76,0.1); }
     .edu-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-
-    .edu-degree {
-      font-family: 'Source Serif 4', serif;
-      font-size: 0.85rem;
-      color: var(--cream);
-      display: block;
-    }
-    .edu-school {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.65rem;
-      color: var(--steel);
-      letter-spacing: 0.05em;
-    }
+    .edu-degree { font-size: 0.85rem; color: var(--cream); display: block; }
+    .edu-school { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: var(--steel); }
 
     /* ── NEWS ── */
-    .news-list { display: flex; flex-direction: column; gap: 0; }
-
-    .news-item {
-      display: grid;
-      grid-template-columns: 140px 1fr;
-      gap: 2rem;
-      padding: 1.5rem 0;
-      border-bottom: 1px solid rgba(201,168,76,0.1);
-      transition: background 0.2s;
-    }
+    .news-list { display: flex; flex-direction: column; }
+    .news-item { display: grid; grid-template-columns: 140px 1fr; gap: 2rem; padding: 1.5rem 0; border-bottom: 1px solid rgba(201,168,76,0.1); }
     .news-item:first-child { border-top: 1px solid rgba(201,168,76,0.1); }
-
-    .news-date {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.65rem;
-      color: var(--gold);
-      letter-spacing: 0.08em;
-      padding-top: 0.2rem;
-      line-height: 1.4;
-    }
-
+    .news-date { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: var(--gold); letter-spacing: 0.08em; padding-top: 0.2rem; }
     .news-content { font-size: 0.92rem; color: var(--cream-dim); }
     .news-content a { color: var(--gold-light); text-decoration: none; border-bottom: 1px solid var(--border); }
     .news-content a:hover { border-color: var(--gold); }
 
     /* ── PUBLICATIONS ── */
-    .pub-item {
-      background: var(--navy-mid);
-      border: 1px solid var(--border);
-      padding: 1.8rem 2rem;
-      margin-bottom: 1rem;
-      position: relative;
-      transition: border-color 0.2s, transform 0.2s;
-    }
+    .pub-item { background: var(--navy-mid); border: 1px solid var(--border); padding: 1.8rem 2rem; margin-bottom: 1rem; transition: border-color 0.2s, transform 0.2s; }
     .pub-item:hover { border-color: var(--gold); transform: translateX(4px); }
-
-    .pub-year {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.65rem;
-      color: var(--gold);
-      letter-spacing: 0.15em;
-      margin-bottom: 0.5rem;
-    }
-
-    .pub-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1rem;
-      color: var(--white);
-      margin-bottom: 0.4rem;
-      font-style: italic;
-    }
+    .pub-year { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: var(--gold); letter-spacing: 0.15em; margin-bottom: 0.5rem; }
+    .pub-title { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--white); font-style: italic; }
     .pub-title a { color: inherit; text-decoration: none; }
     .pub-title a:hover { color: var(--gold-light); }
 
-    .pub-journal {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.68rem;
-      color: var(--steel);
-      letter-spacing: 0.05em;
+    /* ── CONFERENCES ── */
+    .conf-item {
+      display: grid; grid-template-columns: 100px 1fr; gap: 2rem;
+      padding: 1.8rem 0; border-bottom: 1px solid rgba(201,168,76,0.1);
     }
+    .conf-item:first-child { border-top: 1px solid rgba(201,168,76,0.1); }
+    .conf-date { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: var(--gold); letter-spacing: 0.06em; line-height: 1.5; padding-top: 0.2rem; }
+    .conf-name { font-family: 'Playfair Display', serif; font-size: 1rem; font-style: italic; color: var(--white); margin-bottom: 0.3rem; }
+    .conf-location { font-family: 'JetBrains Mono', monospace; font-size: 0.66rem; color: var(--steel); letter-spacing: 0.05em; margin-bottom: 0.5rem; }
+    .conf-role { font-size: 0.85rem; color: var(--cream-dim); margin-bottom: 0.25rem; }
+    .conf-talk { font-size: 0.82rem; color: var(--steel); font-style: italic; margin-top: 0.2rem; }
+    .conf-badge {
+      display: inline-block; font-family: 'JetBrains Mono', monospace;
+      font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.2rem 0.6rem; border-radius: 2px; margin-bottom: 0.5rem;
+    }
+    .badge-invited { background: rgba(201,168,76,0.15); color: var(--gold); border: 1px solid var(--border); }
+    .badge-organizer { background: rgba(100,160,200,0.1); color: #7eb8d4; border: 1px solid rgba(100,160,200,0.2); }
+
+    /* ── SEMINARS ── */
+    .seminar-item { display: grid; grid-template-columns: 140px 1fr; gap: 2rem; padding: 1.1rem 0; border-bottom: 1px solid rgba(201,168,76,0.08); }
+    .seminar-item:first-child { border-top: 1px solid rgba(201,168,76,0.1); }
+    .seminar-date { font-family: 'JetBrains Mono', monospace; font-size: 0.63rem; color: var(--gold); letter-spacing: 0.06em; padding-top: 0.1rem; }
+    .seminar-title { font-size: 0.9rem; color: var(--cream-dim); font-style: italic; }
+    .seminar-note { font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; color: var(--steel); margin-top: 0.2rem; letter-spacing: 0.05em; }
+    .seminar-group-label { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--gold); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 2rem; }
 
     /* ── TEACHING ── */
-    .teaching-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .course-card {
-      background: var(--navy-mid);
-      border: 1px solid var(--border);
-      padding: 1.5rem;
-      transition: border-color 0.2s;
-    }
+    .teaching-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
+    .course-card { background: var(--navy-mid); border: 1px solid var(--border); padding: 1.5rem; transition: border-color 0.2s; }
     .course-card:hover { border-color: var(--gold); }
-
-    .course-code {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.65rem;
-      color: var(--gold);
-      letter-spacing: 0.15em;
-      margin-bottom: 0.5rem;
-    }
-
-    .course-name {
-      font-family: 'Playfair Display', serif;
-      font-size: 1rem;
-      color: var(--white);
-      margin-bottom: 0.3rem;
-    }
-
-    .course-level {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.62rem;
-      color: var(--steel);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-    }
+    .course-code { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: var(--gold); letter-spacing: 0.15em; margin-bottom: 0.5rem; }
+    .course-name { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--white); margin-bottom: 0.3rem; }
+    .course-level { font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; color: var(--steel); text-transform: uppercase; }
 
     /* ── CONTACT ── */
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-    }
-
-    .contact-info p {
-      color: var(--cream-dim);
-      margin-bottom: 0.5rem;
-      font-size: 0.95rem;
-    }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+    .contact-info p { color: var(--cream-dim); margin-bottom: 0.5rem; font-size: 0.95rem; }
     .contact-info a { color: var(--gold-light); text-decoration: none; }
     .contact-info a:hover { text-decoration: underline; }
+    .contact-label { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.3rem; margin-top: 1.2rem; display: block; }
 
-    .contact-label {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 0.3rem;
-      margin-top: 1.2rem;
-      display: block;
-    }
+    footer { text-align: center; padding: 2.5rem; border-top: 1px solid var(--border); font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; color: var(--steel); }
 
-    /* ── FOOTER ── */
-    footer {
-      text-align: center;
-      padding: 2.5rem;
-      border-top: 1px solid var(--border);
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.1em;
-      color: var(--steel);
-    }
+    @keyframes fadeUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
 
-    /* ── ANIMATIONS ── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 900px) {
+    @media (max-width: 960px) {
       nav { padding: 1rem 1.5rem; }
-      .nav-links { gap: 1.2rem; }
+      .nav-links { gap: 0.9rem; }
+      .nav-links a { font-size: 0.6rem; }
       #hero { grid-template-columns: 1fr; padding: 7rem 1.5rem 3rem; }
       #hero::after { display: none; }
       .hero-text { padding-right: 0; margin-bottom: 3rem; }
       section { padding: 4rem 1.5rem; }
       .about-grid, .contact-grid { grid-template-columns: 1fr; }
       .section-divider { margin: 0 1.5rem; }
-      .news-item { grid-template-columns: 1fr; gap: 0.3rem; }
+      .news-item, .conf-item, .seminar-item { grid-template-columns: 1fr; gap: 0.3rem; }
     }
   </style>
 </head>
@@ -544,6 +289,8 @@
     <li><a href="#news">News</a></li>
     <li><a href="#publications">Publications</a></li>
     <li><a href="#teaching">Teaching</a></li>
+    <li><a href="#conferences">Conferences</a></li>
+    <li><a href="#seminars">Seminars</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
@@ -556,13 +303,11 @@
     <p class="hero-title">Department of Mathematics, Faculty of Arts and Sciences</p>
     <p class="hero-affil">Giresun University · Giresun, Türkiye</p>
     <p class="hero-affil">Missouri University of Science &amp; Technology · Ph.D. Mathematics</p>
-
     <div class="hero-buttons">
       <a class="btn btn-primary" href="https://drive.google.com/file/d/1ewHPlaHvi_uXTkXT2nuZLUiHQP9X-WCs/view?usp=sharing" target="_blank">Download CV</a>
       <a class="btn btn-outline" href="#publications">Publications</a>
       <a class="btn btn-outline" href="#contact">Contact</a>
     </div>
-
     <div class="hero-social">
       <a class="social-link" href="https://scholar.google.com/citations?hl=en&user=UpbBI10AAAAJ" target="_blank">Scholar</a>
       <a class="social-link" href="https://orcid.org/0000-0001-6657-7409" target="_blank">ORCID</a>
@@ -585,20 +330,10 @@
       <span class="tag">UAV/UGV Control</span>
       <span class="tag">Dynamic Systems</span>
     </div>
-
     <div class="stat-row">
-      <div class="stat">
-        <span class="stat-num">20+</span>
-        <span class="stat-label">Publications</span>
-      </div>
-      <div class="stat">
-        <span class="stat-num">2025</span>
-        <span class="stat-label">Full Prof.</span>
-      </div>
-      <div class="stat">
-        <span class="stat-num">20+</span>
-        <span class="stat-label">Conferences</span>
-      </div>
+      <div class="stat"><span class="stat-num">50+</span><span class="stat-label">Publications</span></div>
+      <div class="stat"><span class="stat-num">15+</span><span class="stat-label">Conferences</span></div>
+      <div class="stat"><span class="stat-num">25+</span><span class="stat-label">Seminars</span></div>
     </div>
   </div>
 </div>
@@ -607,34 +342,19 @@
 
 <!-- ABOUT -->
 <section id="about">
-  <div class="section-header">
-    <span class="section-num">01</span>
-    <h2 class="section-title">About</h2>
-    <div class="section-line"></div>
-  </div>
-
+  <div class="section-header"><span class="section-num">01</span><h2 class="section-title">About</h2><div class="section-line"></div></div>
   <div class="about-grid">
     <div class="about-text">
       <p>I am a Full Professor in the Department of Mathematics at Giresun University, a position I have held since May 2025. I earned my M.S. in Applied Mathematics and my Ph.D. in Mathematics from Missouri University of Science and Technology. In addition, I completed a second M.S. degree in Electrical Engineering at Missouri S&amp;T in May 2016.</p>
       <p>My current research focuses on differential and difference equations and time scales theory, with applications in biology and engineering, particularly in control theory and the oscillatory behavior of linear and nonlinear dynamic equations. The calculus of time scales was developed to unify and extend results for both differential and difference equations, providing a comprehensive framework for dynamic systems.</p>
       <p>In the biological sciences, my work has explored the mathematical modeling of infectious diseases, including monkeypox, HIV, tuberculosis and HPV. In engineering applications, I have been investigating control strategies for unmanned aerial and ground vehicles, integrating theoretical advances with practical problem-solving.</p>
     </div>
-
     <div>
       <div class="edu-block">
         <h4>Education</h4>
-        <div class="edu-item">
-          <span class="edu-degree">Ph.D. in Mathematics</span>
-          <span class="edu-school">Missouri University of Science &amp; Technology</span>
-        </div>
-        <div class="edu-item">
-          <span class="edu-degree">M.S. in Applied Mathematics</span>
-          <span class="edu-school">Missouri University of Science &amp; Technology</span>
-        </div>
-        <div class="edu-item">
-          <span class="edu-degree">M.S. in Electrical Engineering</span>
-          <span class="edu-school">Missouri S&amp;T · May 2016</span>
-        </div>
+        <div class="edu-item"><span class="edu-degree">Ph.D. in Mathematics</span><span class="edu-school">Missouri University of Science &amp; Technology</span></div>
+        <div class="edu-item"><span class="edu-degree">M.S. in Applied Mathematics</span><span class="edu-school">Missouri University of Science &amp; Technology</span></div>
+        <div class="edu-item"><span class="edu-degree">M.S. in Electrical Engineering</span><span class="edu-school">Missouri S&amp;T · May 2016</span></div>
       </div>
     </div>
   </div>
@@ -644,45 +364,16 @@
 
 <!-- NEWS -->
 <section id="news">
-  <div class="section-header">
-    <span class="section-num">02</span>
-    <h2 class="section-title">News &amp; Events</h2>
-    <div class="section-line"></div>
-  </div>
-
+  <div class="section-header"><span class="section-num">02</span><h2 class="section-title">News &amp; Events</h2><div class="section-line"></div></div>
   <div class="news-list">
-    <div class="news-item">
-      <span class="news-date">Dec 8, 2025</span>
-      <p class="news-content">The Department of Mathematics at Giresun University hosted Dr. Elif Öztürk Beigmohammadi from Norway. Dr. Öztürk delivered a presentation titled "Modelling of Mineral Efficiency in Geothermal."</p>
-    </div>
-    <div class="news-item">
-      <span class="news-date">Nov 20, 2025</span>
-      <p class="news-content">The Department hosted Dr. Neslihan Nesliye Pelen from the University of South Florida. Presentation: "Global Periodic Behavior in an HPA Axis Model with Time-Dependent Stress Input."</p>
-    </div>
-    <div class="news-item">
-      <span class="news-date">Oct 20, 2025</span>
-      <p class="news-content">The Department hosted Dr. Nick Wintz from Rashford University (USA). Presentation: "The Conformable Kalman Filter."</p>
-    </div>
-    <div class="news-item">
-      <span class="news-date">Oct 13, 2025</span>
-      <p class="news-content">The Department hosted Dr. Tom Cuchta from Marshall University (USA). Presentation: "Dynamic Special Functions."</p>
-    </div>
-    <div class="news-item">
-      <span class="news-date">Sep 19, 2025</span>
-      <p class="news-content">Our article <a href="https://journals.tubitak.gov.tr/cgi/viewcontent.cgi?article=3610&context=math" target="_blank">"Nonoscillatory Solutions of Third-Order Nonlinear Dynamic Equations: Existence and Nonexistence"</a> published in the Turkish Journal of Mathematics.</p>
-    </div>
-    <div class="news-item">
-      <span class="news-date">May 23, 2025</span>
-      <p class="news-content">Promoted to Full Professor in the Department of Mathematics at Giresun University.</p>
-    </div>
-    <div class="news-item">
-      <span class="news-date">Jun 24, 2024</span>
-      <p class="news-content">Attended the <a href="https://icdea2024.sciencesconf.org/" target="_blank">29th International Conference on Difference Equations and Applications (ICDEA 2024)</a>, Paris, France.</p>
-    </div>
-    <div class="news-item">
-      <span class="news-date">May 14, 2022</span>
-      <p class="news-content">Article <a href="https://link.springer.com/article/10.1007/s12591-022-00603-0" target="_blank">"Almost Oscillation of a Third-Order Emden-Fowler Equation on Time Scales"</a> published in Differential Equations and Dynamical Systems.</p>
-    </div>
+    <div class="news-item"><span class="news-date">Dec 8, 2025</span><p class="news-content">The Department hosted Dr. Elif Öztürk Beigmohammadi from Norway. Presentation: "Modelling of Mineral Efficiency in Geothermal."</p></div>
+    <div class="news-item"><span class="news-date">Nov 20, 2025</span><p class="news-content">The Department hosted Dr. Neslihan Nesliye Pelen from the University of South Florida. Presentation: "Global Periodic Behavior in an HPA Axis Model with Time-Dependent Stress Input."</p></div>
+    <div class="news-item"><span class="news-date">Oct 20, 2025</span><p class="news-content">The Department hosted Dr. Nick Wintz from Rashford University (USA). Presentation: "The Conformable Kalman Filter."</p></div>
+    <div class="news-item"><span class="news-date">Oct 13, 2025</span><p class="news-content">The Department hosted Dr. Tom Cuchta from Marshall University (USA). Presentation: "Dynamic Special Functions."</p></div>
+    <div class="news-item"><span class="news-date">Sep 19, 2025</span><p class="news-content">Article <a href="https://journals.tubitak.gov.tr/cgi/viewcontent.cgi?article=3610&context=math" target="_blank">"Nonoscillatory Solutions of Third-Order Nonlinear Dynamic Equations"</a> published in the Turkish Journal of Mathematics.</p></div>
+    <div class="news-item"><span class="news-date">May 23, 2025</span><p class="news-content">Promoted to Full Professor in the Department of Mathematics at Giresun University.</p></div>
+    <div class="news-item"><span class="news-date">Jun 24, 2024</span><p class="news-content">Attended the <a href="https://icdea2024.sciencesconf.org/" target="_blank">29th International Conference on Difference Equations and Applications (ICDEA 2024)</a>, Paris, France.</p></div>
+    <div class="news-item"><span class="news-date">May 14, 2022</span><p class="news-content">Article <a href="https://link.springer.com/article/10.1007/s12591-022-00603-0" target="_blank">"Almost Oscillation of a Third-Order Emden-Fowler Equation on Time Scales"</a> published in Differential Equations and Dynamical Systems.</p></div>
   </div>
 </section>
 
@@ -690,111 +381,226 @@
 
 <!-- PUBLICATIONS -->
 <section id="publications">
-  <div class="section-header">
-    <span class="section-num">03</span>
-    <h2 class="section-title">Selected Publications</h2>
-    <div class="section-line"></div>
-  </div>
-
-  <div class="pub-item">
-    <div class="pub-year">2025 · Turkish Journal of Mathematics</div>
-    <p class="pub-title"><a href="https://journals.tubitak.gov.tr/cgi/viewcontent.cgi?article=3610&context=math" target="_blank">Nonoscillatory Solutions of Third-Order Nonlinear Dynamic Equations: Existence and Nonexistence</a></p>
-  </div>
-
-  <div class="pub-item">
-    <div class="pub-year">2022 · Differential Equations and Dynamical Systems</div>
-    <p class="pub-title"><a href="https://link.springer.com/article/10.1007/s12591-022-00603-0" target="_blank">Almost Oscillation of a Third-Order Emden-Fowler Equation on Time Scales</a></p>
-  </div>
-
-  <div class="pub-item">
-    <div class="pub-year">2021 · Filomat</div>
-    <p class="pub-title">Oscillation of Three Dimensional Time Scale Systems with Fixed Point Theorems</p>
-  </div>
-
-  <div class="pub-item">
-    <div class="pub-year">2020 · Journal of Mathematics and Computer Science</div>
-    <p class="pub-title">Saturation Control of PVTOL Aircraft on Time Scales</p>
-  </div>
-
-  <div class="pub-item">
-    <div class="pub-year">2019 · Differential Equations and Dynamical Systems</div>
-    <p class="pub-title">Control of Wheeled Mobile Robots on Time Scales</p>
-  </div>
-
-  <div class="pub-item">
-    <div class="pub-year">2019 · Turkish Journal of Mathematics</div>
-    <p class="pub-title">On Nonoscillatory Solutions of Three Dimensional Time-Scale Systems</p>
-  </div>
-
-  <div style="margin-top:2rem;">
-    <a class="btn btn-outline" href="https://scholar.google.com/citations?hl=en&user=UpbBI10AAAAJ" target="_blank">View All on Google Scholar →</a>
-  </div>
+  <div class="section-header"><span class="section-num">03</span><h2 class="section-title">Selected Publications</h2><div class="section-line"></div></div>
+  <div class="pub-item"><div class="pub-year">2025 · Turkish Journal of Mathematics</div><p class="pub-title"><a href="https://journals.tubitak.gov.tr/cgi/viewcontent.cgi?article=3610&context=math" target="_blank">Nonoscillatory Solutions of Third-Order Nonlinear Dynamic Equations: Existence and Nonexistence</a></p></div>
+  <div class="pub-item"><div class="pub-year">2022 · Differential Equations and Dynamical Systems</div><p class="pub-title"><a href="https://link.springer.com/article/10.1007/s12591-022-00603-0" target="_blank">Almost Oscillation of a Third-Order Emden-Fowler Equation on Time Scales</a></p></div>
+  <div class="pub-item"><div class="pub-year">2021 · Filomat</div><p class="pub-title">Oscillation of Three Dimensional Time Scale Systems with Fixed Point Theorems</p></div>
+  <div class="pub-item"><div class="pub-year">2020 · Journal of Mathematics and Computer Science</div><p class="pub-title">Saturation Control of PVTOL Aircraft on Time Scales</p></div>
+  <div class="pub-item"><div class="pub-year">2019 · Differential Equations and Dynamical Systems</div><p class="pub-title">Control of Wheeled Mobile Robots on Time Scales</p></div>
+  <div class="pub-item"><div class="pub-year">2019 · Turkish Journal of Mathematics</div><p class="pub-title">On Nonoscillatory Solutions of Three Dimensional Time-Scale Systems</p></div>
+  <div style="margin-top:2rem;"><a class="btn btn-outline" href="https://scholar.google.com/citations?hl=en&user=UpbBI10AAAAJ" target="_blank">View All on Google Scholar →</a></div>
 </section>
 
 <div class="section-divider"></div>
 
 <!-- TEACHING -->
 <section id="teaching">
-  <div class="section-header">
-    <span class="section-num">04</span>
-    <h2 class="section-title">Teaching</h2>
-    <div class="section-line"></div>
+  <div class="section-header"><span class="section-num">04</span><h2 class="section-title">Teaching</h2><div class="section-line"></div></div>
+  <div class="teaching-grid">
+    <div class="course-card"><div class="course-code">Undergraduate</div><div class="course-name">Calculus I &amp; II</div><div class="course-level">Giresun University</div></div>
+    <div class="course-card"><div class="course-code">Undergraduate</div><div class="course-name">Differential Equations</div><div class="course-level">Giresun University</div></div>
+    <div class="course-card"><div class="course-code">Undergraduate</div><div class="course-name">Linear Algebra</div><div class="course-level">Giresun University</div></div>
+    <div class="course-card"><div class="course-code">Graduate</div><div class="course-name">Time Scales Theory</div><div class="course-level">Giresun University</div></div>
+    <div class="course-card"><div class="course-code">Graduate</div><div class="course-name">Mathematical Modeling</div><div class="course-level">Giresun University</div></div>
+    <div class="course-card"><div class="course-code">Graduate</div><div class="course-name">Advanced Differential Equations</div><div class="course-level">Giresun University</div></div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- CONFERENCES -->
+<section id="conferences">
+  <div class="section-header"><span class="section-num">05</span><h2 class="section-title">Conferences</h2><div class="section-line"></div></div>
+
+  <div class="conf-item">
+    <div class="conf-date">June 2024</div>
+    <div>
+      <div class="conf-name">29th International Conference on Difference Equations and Applications (ICDEA 2024)</div>
+      <div class="conf-location">Paris, France</div>
+      <div class="conf-talk">Talk: Classification of Nonoscillatory Solutions of a Third Order Nonlinear Dynamic Equation</div>
+      <div class="conf-talk">Session: Recent advances on time scales and its relation to difference equations</div>
+    </div>
   </div>
 
-  <div class="teaching-grid">
-    <div class="course-card">
-      <div class="course-code">Undergraduate</div>
-      <div class="course-name">Calculus I &amp; II</div>
-      <div class="course-level">Giresun University</div>
+  <div class="conf-item">
+    <div class="conf-date">Apr 2022</div>
+    <div>
+      <span class="conf-badge badge-organizer">Special Session Organizer</span>
+      <div class="conf-name">Joint Mathematics Meetings (JMM 2022)</div>
+      <div class="conf-location">Seattle, WA, USA</div>
+      <div class="conf-role">Analysis of and Recent Advances in Difference, Differential and Dynamic Equations with Applications</div>
     </div>
-    <div class="course-card">
-      <div class="course-code">Undergraduate</div>
-      <div class="course-name">Differential Equations</div>
-      <div class="course-level">Giresun University</div>
+  </div>
+
+  <div class="conf-item">
+    <div class="conf-date">July 2018</div>
+    <div>
+      <span class="conf-badge badge-invited">Invited Speaker</span>
+      <div class="conf-name">The 12th AIMS Conference on Dynamical Systems, Differential Equations and Applications</div>
+      <div class="conf-location">National Taiwan University, Taipei City, Taiwan</div>
+      <div class="conf-role">Special Session on Advances in Qualitative Theory of Differential, Difference and Dynamic Equations</div>
+      <div class="conf-talk">Talk: Recent Advances on Nonoscillatory Solution of Two-Dimensional Time Scale Systems</div>
     </div>
-    <div class="course-card">
-      <div class="course-code">Undergraduate</div>
-      <div class="course-name">Linear Algebra</div>
-      <div class="course-level">Giresun University</div>
+  </div>
+
+  <div class="conf-item">
+    <div class="conf-date">June 2018</div>
+    <div>
+      <div class="conf-name">ECCO 2018, University of Fribourg</div>
+      <div class="conf-location">Fribourg, Switzerland</div>
+      <div class="conf-talk">Talk: Optimal Control of Unmanned Aerial Vehicles on Time Scale Theory</div>
     </div>
-    <div class="course-card">
-      <div class="course-code">Graduate</div>
-      <div class="course-name">Time Scales Theory</div>
-      <div class="course-level">Giresun University</div>
+  </div>
+
+  <div class="conf-item">
+    <div class="conf-date">Nov 2017</div>
+    <div>
+      <div class="conf-name">Costas 2017</div>
+      <div class="conf-location">Samsun, Turkey</div>
+      <div class="conf-talk">Talk: Control of Unmanned Ground Vehicles on Time Scales</div>
     </div>
-    <div class="course-card">
-      <div class="course-code">Graduate</div>
-      <div class="course-name">Mathematical Modeling</div>
-      <div class="course-level">Giresun University</div>
+  </div>
+
+  <div class="conf-item">
+    <div class="conf-date">Jan 2017</div>
+    <div>
+      <div class="conf-name">Joint Mathematics Meetings (JMM 2017)</div>
+      <div class="conf-location">Atlanta, GA, USA</div>
+      <div class="conf-talk">Talk: Optimal Control of Unmanned Aerial Vehicles</div>
     </div>
-    <div class="course-card">
-      <div class="course-code">Graduate</div>
-      <div class="course-name">Advanced Differential Equations</div>
-      <div class="course-level">Giresun University</div>
+  </div>
+
+  <div class="conf-item">
+    <div class="conf-date">Nov 2016</div>
+    <div>
+      <div class="conf-name">The 36th SEARCDE</div>
+      <div class="conf-location">Fort Myers, FL, USA</div>
+      <div class="conf-talk">Talk: Classification Schemes for Nonoscillatory Solutions of Nonlinear Dynamical Systems on Time Scales</div>
+    </div>
+  </div>
+
+  <div class="conf-item">
+    <div class="conf-date">Aug 2016</div>
+    <div>
+      <div class="conf-name">MAA Math Fest</div>
+      <div class="conf-location">Columbus, OH, USA</div>
+      <div class="conf-talk">Talk: On Nonoscillatory Solutions of Two Dimensional Nonlinear Delay Dynamical Systems</div>
+    </div>
+  </div>
+
+  <div class="conf-item">
+    <div class="conf-date">Oct 2015</div>
+    <div>
+      <div class="conf-name">Fall Southeastern Sectional Meeting</div>
+      <div class="conf-location">University of Memphis, Memphis, TN, USA</div>
+      <div class="conf-talk">Talk: Classification of Nonoscillatory Solutions of Dynamical Systems on Time Scales</div>
+    </div>
+  </div>
+
+  <div class="conf-item">
+    <div class="conf-date">Oct 2015</div>
+    <div>
+      <div class="conf-name">The 35th SEARCDE</div>
+      <div class="conf-location">Greensboro, NC, USA</div>
+      <div class="conf-talk">Talk: On Nonoscillatory Solutions of Systems of First Order Dynamic Equations on Time Scales</div>
+    </div>
+  </div>
+
+  <div class="conf-item">
+    <div class="conf-date">May 2015</div>
+    <div>
+      <div class="conf-name">The 7th International Conference on Dynamic Systems and Applications &amp; 5th International Conference on Neural, Parallel, and Scientific Computations</div>
+      <div class="conf-location">Atlanta, GA, USA</div>
+      <div class="conf-talk">Talk: On Nonoscillatory Solutions of Emden Fowler Dynamic Systems on Time Scales</div>
+    </div>
+  </div>
+
+  <div class="conf-item">
+    <div class="conf-date">Apr 2015</div>
+    <div>
+      <div class="conf-name">The 1st Meeting of SIAM Central States Section, Missouri S&amp;T</div>
+      <div class="conf-location">Rolla, MO, USA</div>
+      <div class="conf-talk">Talk: On Nonoscillatory Solutions of Emden Fowler Dynamic Systems on Time Scales</div>
+    </div>
+  </div>
+
+  <div class="conf-item">
+    <div class="conf-date">Mar 2015</div>
+    <div>
+      <div class="conf-name">MAA Missouri Section Spring Meeting</div>
+      <div class="conf-location">Rolla, MO, USA</div>
+      <div class="conf-talk">Talk: Classification of Nonoscillatory Solutions of Emden-Fowler Dynamic Equations on Time Scales</div>
+    </div>
+  </div>
+
+  <div class="conf-item">
+    <div class="conf-date">Oct 2014</div>
+    <div>
+      <div class="conf-name">The 34th SEARCDE</div>
+      <div class="conf-location">University of Memphis, Memphis, TN, USA</div>
+      <div class="conf-talk">Talk: Asymptotic Properties of Solutions of Emden-Fowler Dynamic Equations</div>
+    </div>
+  </div>
+
+  <div class="conf-item">
+    <div class="conf-date">Apr 2014</div>
+    <div>
+      <span class="conf-badge badge-invited">Invited Speaker</span>
+      <div class="conf-name">AMS 1100 Sectional Meeting</div>
+      <div class="conf-location">Texas Tech University, Lubbock, TX, USA</div>
+      <div class="conf-role">Special Session on Analysis and Applications of Dynamic Equations on Time Scales</div>
+      <div class="conf-talk">Talk: Asymptotic Behavior of Emden-Fowler Dynamic Equations on Time Scales</div>
     </div>
   </div>
 </section>
 
 <div class="section-divider"></div>
 
+<!-- SEMINARS -->
+<section id="seminars">
+  <div class="section-header"><span class="section-num">06</span><h2 class="section-title">Seminars</h2><div class="section-line"></div></div>
+  <p class="seminar-group-label">Time Scale Seminars · Missouri S&amp;T</p>
+
+  <div class="seminar-item"><span class="seminar-date">May 10, 2017</span><div><div class="seminar-title">Control of wheeled mobile robots on time scales</div></div></div>
+  <div class="seminar-item"><span class="seminar-date">Feb 2, 2017</span><div><div class="seminar-title">Long-time behavior of Emden-Fowler dynamical systems on time scales</div></div></div>
+  <div class="seminar-item"><span class="seminar-date">Nov 16, 2016</span><div><div class="seminar-title">Optimal control of unmanned aerial vehicles on time scales</div></div></div>
+  <div class="seminar-item"><span class="seminar-date">Sep 14, 2016</span><div><div class="seminar-title">Limiting behavior of nonoscillatory solutions for two-dimensional nonlinear time scale systems (Part II)</div></div></div>
+  <div class="seminar-item"><span class="seminar-date">Sep 7, 2016</span><div><div class="seminar-title">Limiting behavior of nonoscillatory solutions for two-dimensional nonlinear time scale systems</div></div></div>
+  <div class="seminar-item"><span class="seminar-date">Mar 23, 2016</span><div><div class="seminar-title">Existence and classification of nonoscillatory solutions of two-dimensional time scale systems</div><div class="seminar-note">Ph.D. Thesis Defense</div></div></div>
+  <div class="seminar-item"><span class="seminar-date">Mar 9, 2016</span><div><div class="seminar-title">Existence and classification of nonoscillatory solutions of two-dimensional time scale systems</div></div></div>
+  <div class="seminar-item"><span class="seminar-date">Feb 10, 2016</span><div><div class="seminar-title">Nonoscillatory solutions of two-dimensional nonlinear delay dynamical systems</div></div></div>
+  <div class="seminar-item"><span class="seminar-date">Sep 16, 2015</span><div><div class="seminar-title">Nonoscillatory solutions of systems of dynamic equations on time scales (Part II)</div></div></div>
+  <div class="seminar-item"><span class="seminar-date">Sep 9, 2015</span><div><div class="seminar-title">Nonoscillatory solutions of systems of dynamic equations on time scales</div></div></div>
+  <div class="seminar-item"><span class="seminar-date">Apr 22, 2015</span><div><div class="seminar-title">On nonoscillatory solutions of Emden-Fowler dynamic equations and systems</div><div class="seminar-note">Comprehensive Exam</div></div></div>
+  <div class="seminar-item"><span class="seminar-date">Nov 19, 2014</span><div><div class="seminar-title">Asymptotic properties of solutions of Emden-Fowler dynamic systems (Part II)</div></div></div>
+  <div class="seminar-item"><span class="seminar-date">Oct 29, 2014</span><div><div class="seminar-title">Asymptotic properties of solutions of Emden-Fowler dynamic systems</div></div></div>
+  <div class="seminar-item"><span class="seminar-date">Sep 3, 2014</span><div><div class="seminar-title">On Emden-Fowler dynamic equations on time scales</div></div></div>
+  <div class="seminar-item"><span class="seminar-date">Nov 20, 2013</span><div><div class="seminar-title">Integral conditions for nonoscillation of second order nonlinear dynamical equations on time scales (Part III)</div></div></div>
+  <div class="seminar-item"><span class="seminar-date">Nov 6, 2013</span><div><div class="seminar-title">Integral conditions for nonoscillation of second order nonlinear dynamical equations on time scales (Part II)</div></div></div>
+  <div class="seminar-item"><span class="seminar-date">Oct 30, 2013</span><div><div class="seminar-title">Integral conditions for nonoscillation of second order nonlinear dynamical equations on time scales</div></div></div>
+  <div class="seminar-item"><span class="seminar-date">Oct 31, 2012</span><div><div class="seminar-title">Integral conditions for nonoscillation of second order nonlinear differential equations (Part III)</div></div></div>
+  <div class="seminar-item"><span class="seminar-date">Oct 24, 2012</span><div><div class="seminar-title">Integral conditions for nonoscillation of second order nonlinear differential equations (Part II)</div></div></div>
+  <div class="seminar-item"><span class="seminar-date">Oct 10, 2012</span><div><div class="seminar-title">Integral conditions for nonoscillation of second order nonlinear differential equations</div></div></div>
+  <div class="seminar-item"><span class="seminar-date">Mar 14, 2012</span><div><div class="seminar-title">On oscillation and nonoscillation properties of Emden-Fowler difference equations (Part II)</div></div></div>
+  <div class="seminar-item"><span class="seminar-date">Mar 7, 2012</span><div><div class="seminar-title">On oscillation and nonoscillation properties of Emden-Fowler difference equations</div></div></div>
+  <div class="seminar-item"><span class="seminar-date">Sep 21, 2011</span><div><div class="seminar-title">Basic concepts of time scales calculus</div></div></div>
+  <div class="seminar-item"><span class="seminar-date">Apr 21, 2010</span><div><div class="seminar-title">Iterated oscillation criteria for delay dynamic equations of first order (Part II)</div></div></div>
+  <div class="seminar-item"><span class="seminar-date">Apr 14, 2010</span><div><div class="seminar-title">Iterated oscillation criteria for delay dynamic equations of first order</div></div></div>
+</section>
+
+<div class="section-divider"></div>
+
 <!-- CONTACT -->
 <section id="contact">
-  <div class="section-header">
-    <span class="section-num">05</span>
-    <h2 class="section-title">Contact</h2>
-    <div class="section-line"></div>
-  </div>
-
+  <div class="section-header"><span class="section-num">07</span><h2 class="section-title">Contact</h2><div class="section-line"></div></div>
   <div class="contact-grid">
     <div class="contact-info">
       <span class="contact-label">Position</span>
       <p>Full Professor, Department of Mathematics<br>Faculty of Arts and Sciences<br>Giresun University, Giresun, Türkiye</p>
-
       <span class="contact-label">Email</span>
       <p><a href="mailto:drozkanozturk@outlook.com">drozkanozturk@outlook.com</a></p>
       <p><a href="mailto:ozkan.ozturk@giresun.edu.tr">ozkan.ozturk@giresun.edu.tr</a></p>
     </div>
-
     <div class="contact-info">
       <span class="contact-label">Academic Profiles</span>
       <p><a href="https://scholar.google.com/citations?hl=en&user=UpbBI10AAAAJ" target="_blank">Google Scholar</a></p>
