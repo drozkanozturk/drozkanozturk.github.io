@@ -279,11 +279,39 @@
     }
   </style>
 </head>
+  <script>
+  const words = ["Think.", "Prove.", "Discover."];
+  let i = 0, j = 0, current = "", isDeleting = false;
+  const el = document.getElementById("typewriter");
+
+  function type() {
+    if (i < words.length) {
+      if (!isDeleting && j <= words[i].length) {
+        current = words[i].substring(0, j++);
+        el.textContent = current;
+        setTimeout(type, 120);
+      } else if (isDeleting && j >= 0) {
+        current = words[i].substring(0, j--);
+        el.textContent = current;
+        setTimeout(type, 60);
+      } else if (!isDeleting) {
+        isDeleting = true;
+        setTimeout(type, 800);
+      } else {
+        isDeleting = false;
+        i++;
+        if (i < words.length) setTimeout(type, 300);
+        else el.textContent = "Think. Prove. Discover.";
+      }
+    }
+  }
+  type();
+</script>
 <body>
 
 <!-- NAV -->
 <nav>
-  <a class="nav-logo" href="#hero">Dr. Özkan Öztürk</a>
+  <a class="nav-logo" href="#hero" id="typewriter"></a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#news">News</a></li>
