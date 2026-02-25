@@ -278,6 +278,7 @@
       .about-grid, .contact-grid { grid-template-columns: 1fr; }
       .section-divider { margin: 0 1.5rem; }
       .news-item, .conf-item, .seminar-item { grid-template-columns: 1fr; gap: 0.3rem; }
+      .collaborators-grid { grid-template-columns: repeat(2, 1fr) !important; }
     }
   </style>
 </head>
@@ -389,7 +390,7 @@
 <!-- COLLABORATORS -->
 <div style="margin-bottom:3rem;">
   <h3 style="font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--gold);margin-bottom:1.5rem;font-weight:600;">Collaborators</h3>
-  <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;align-items:stretch;">
+  <div class="collaborators-grid" style="display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;align-items:stretch;">
 
     <a href="https://sites.mst.edu/akin/" target="_blank" style="text-decoration:none;display:flex;">
     <div class="pub-item" style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:0.8rem;cursor:pointer;width:100%;justify-content:flex-start;padding-top:1.5rem;">
