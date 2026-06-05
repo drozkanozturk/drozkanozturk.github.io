@@ -372,6 +372,118 @@
       <div class="stat"><span class="stat-num">15+</span><span class="stat-label">Conferences</span></div>
       <div class="stat"><span class="stat-num">25+</span><span class="stat-label">Seminars</span></div>
     </div>
+
+    
+<div style="margin-top:2rem;overflow-x:auto;">
+<style>
+.cal-header{display:grid;grid-template-columns:50px repeat(5,1fr);gap:1px;margin-bottom:1px;}
+.cal-header-cell{background:#0a0f1e;color:#c9a84c;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;padding:6px 4px;text-align:center;border:1px solid rgba(201,168,76,0.25);}
+.cal-body{display:grid;grid-template-columns:50px repeat(5,1fr);gap:1px;background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.25);}
+.cal-time{background:#0a0f1e;color:#c9a84c;font-size:9px;padding:3px 4px;text-align:right;border-right:1px solid rgba(201,168,76,0.25);display:flex;align-items:center;justify-content:flex-end;min-height:24px;}
+.cal-cell{background:#111827;min-height:24px;border:0.5px solid rgba(201,168,76,0.08);position:relative;cursor:pointer;transition:background 0.15s;}
+.cal-cell:hover{background:#1e2d45;}
+.cal-cell.has-event{background:rgba(201,168,76,0.12);}
+.cal-event{position:absolute;inset:2px;background:rgba(201,168,76,0.2);border-left:2px solid #c9a84c;border-radius:2px;font-size:8px;color:#e8c97a;padding:2px 3px;overflow:hidden;}
+.cal-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:100;align-items:center;justify-content:center;}
+.cal-modal.open{display:flex;}
+.cal-modal-inner{background:#111827;border:1px solid rgba(201,168,76,0.4);border-radius:4px;padding:1.5rem;width:300px;max-width:90vw;}
+.cal-modal-inner h3{color:#c9a84c;font-size:0.8rem;margin-bottom:1rem;letter-spacing:0.1em;text-transform:uppercase;font-family:'JetBrains Mono',monospace;}
+.cal-modal-inner input{width:100%;background:#0a0f1e;border:1px solid rgba(201,168,76,0.3);color:#f0ead8;font-family:'JetBrains Mono',monospace;font-size:0.75rem;padding:0.5rem;border-radius:2px;margin-bottom:0.6rem;box-sizing:border-box;}
+.cal-modal-btns{display:flex;gap:0.5rem;margin-top:1rem;}
+.cal-btn-save{background:#c9a84c;color:#0a0f1e;border:none;padding:0.5rem 1rem;font-family:'JetBrains Mono',monospace;font-size:0.7rem;cursor:pointer;border-radius:2px;}
+.cal-btn-cancel{background:transparent;color:#8294a8;border:1px solid rgba(130,148,168,0.3);padding:0.5rem 1rem;font-family:'JetBrains Mono',monospace;font-size:0.7rem;cursor:pointer;border-radius:2px;}
+</style>
+<div id="calHeader2"></div>
+<div id="calBody2"></div>
+<div style="margin-top:0.5rem;font-family:'JetBrains Mono',monospace;font-size:9px;color:#8294a8;letter-spacing:0.08em;">Click any slot to add event</div>
+</div>
+
+<div class="cal-modal" id="calModal2">
+  <div class="cal-modal-inner">
+    <h3 id="calModalTitle2">Add Event</h3>
+    <input type="text" id="calEventName2" placeholder="Event title..." />
+    <input type="text" id="calEventDesc2" placeholder="Description (optional)..." />
+    <div class="cal-modal-btns">
+      <button class="cal-btn-save" onclick="calSave2()">Save</button>
+      <button class="cal-btn-cancel" onclick="calClose2()">Cancel</button>
+      <button class="cal-btn-cancel" id="calDeleteBtn2" style="display:none;color:#e87a7a;" onclick="calDelete2()">Delete</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  const days=['MON','TUE','WED','THU','FRI'];
+  const slots=[];
+  for(let h=8;h<19;h++) slots.push(h);
+  let events={}, sel=null;
+  const hdr=document.getElementById('calHeader2');
+  const bdy=document.getElementById('calBody2');
+  hdr.className='cal-header';
+  bdy.className='cal-body';
+  hdr.innerHTML='<div class="cal-header-cell"></div>'+days.map(d=>`<div class="cal-header-cell">${d}</div>`).join('');
+  slots.forEach(h=>{
+    const t=document.createElement('div');
+    t.className='cal-time';
+    t.textContent=h+':00';
+    bdy.appendChild(t);
+    days.forEach((d,di)=>{
+      const c=document.createElement('div');
+      c.className='cal-cell';
+      c.id=`cc-${di}-${h}`;
+      c.onclick=()=>calOpen2(di,h);
+      bdy.appendChild(c);
+    });
+  });
+  window.calOpen2=function(day,hour){
+    sel={day,hour};
+    const key=`${day}-${hour}`;
+    const ev=events[key];
+    document.getElementById('calModalTitle2').textContent=ev?'Edit Event':'Add Event';
+    document.getElementById('calEventName2').value=ev?ev.name:'';
+    document.getElementById('calEventDesc2').value=ev?ev.desc:'';
+    document.getElementById('calDeleteBtn2').style.display=ev?'block':'none';
+    document.getElementById('calModal2').classList.add('open');
+  };
+  window.calClose2=function(){
+    document.getElementById('calModal2').classList.remove('open');
+    sel=null;
+  };
+  window.calSave2=function(){
+    if(!sel) return;
+    const name=document.getElementById('calEventName2').value.trim();
+    if(!name) return;
+    const key=`${sel.day}-${sel.hour}`;
+    events[key]={name,desc:document.getElementById('calEventDesc2').value.trim()};
+    render();
+    calClose2();
+  };
+  window.calDelete2=function(){
+    if(!sel) return;
+    delete events[`${sel.day}-${sel.hour}`];
+    render();
+    calClose2();
+  };
+  function render(){
+    document.querySelectorAll('.cal-cell').forEach(c=>{c.innerHTML='';c.classList.remove('has-event');});
+    Object.entries(events).forEach(([key,ev])=>{
+      const [day,hour]=key.split('-');
+      const cell=document.getElementById(`cc-${day}-${hour}`);
+      if(cell){
+        cell.classList.add('has-event');
+        const el=document.createElement('div');
+        el.className='cal-event';
+        el.innerHTML=`<strong>${ev.name}</strong>`;
+        el.onclick=(e)=>{e.stopPropagation();calOpen2(parseInt(day),parseInt(hour));};
+        cell.appendChild(el);
+      }
+    });
+  }
+  document.getElementById('calModal2').onclick=(e)=>{if(e.target===document.getElementById('calModal2'))calClose2();};
+})();
+</script>
+
+    
   </div>
 </div>
 
