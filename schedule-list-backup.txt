@@ -17,7 +17,7 @@ Veri: schedule-data.js
   var prev=0;
   list.forEach(function(e){
     var c=e.type==="meet"?"#7eb8d4":"var(--cream-dim)";
-    var td=font-size:0.9rem;'padding:0.4rem 0.5rem;border-bottom:1px solid rgba(201,168,76,0.12);vertical-align:top;';
+    var td='font-size:0.9rem;'padding:0.4rem 0.5rem;border-bottom:1px solid rgba(201,168,76,0.12);vertical-align:top;';
     h+='<tr><td style="'+td+'color:var(--gold);">'+(e.day!==prev?N[e.day]:'')+'</td>'
      +'<td style="'+td+'color:'+c+';white-space:nowrap;">'+f(e.start)+'–'+f(e.end)+'</td>'
      +'<td style="'+td+'color:'+c+';">'+e.title+'</td></tr>';
