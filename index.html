@@ -375,44 +375,26 @@
     
                <!-- WEEKLY SCHEDULE TABLE (veri: schedule-data.js) -->
    <div style="margin-top:1.8rem;padding-top:1.4rem;border-top:1px solid var(--border);">
-  <p class="research-label">Weekly Schedule</p>
-  <div style="overflow-x:auto;">
-    <table id="mini-schedule" style="width:100%;table-layout:fixed;border-collapse:collapse;font-family:'JetBrains Mono',monospace;font-size:0.6rem;line-height:1.35;"></table>
-  </div>
+  <p class="research-label">Weekly Schedule for Fall 2026</p>
+  <table id="mini-schedule" style="width:100%;border-collapse:collapse;font-family:'JetBrains Mono',monospace;font-size:0.72rem;line-height:1.5;"></table>
 </div>
 <script src="schedule-data.js"></script>
 <script>
 (function(){
-  var D=["","MON","TUE","WED","THU","FRI"];
-  function m(t){var p=t.split(":");return parseInt(p[0],10)*60+parseInt(p[1],10);}
+  var N=["","Mon","Tue","Wed","Thu","Fri"];
   function f(t){var p=t.split(":");return parseInt(p[0],10)+":"+p[1];}
-  var S=8*60, E=20*60, STEP=30, rows=(E-S)/STEP;
-  var b='border:1px solid rgba(201,168,76,0.18);';
-  var skip=[0,0,0,0,0,0];
-  var h='<thead><tr><th style="'+b+'width:2.4rem;"></th>';
-  for(var d=1;d<=5;d++) h+='<th style="'+b+'padding:0.35rem 0.2rem;color:var(--gold);font-weight:400;letter-spacing:0.08em;">'+D[d]+'</th>';
-  h+='</tr></thead><tbody>';
-  for(var r=0;r<rows;r++){
-    var t=S+r*STEP;
-    h+='<tr>';
-    if(r%2===0) h+='<td rowspan="2" style="'+b+'padding:0.15rem 0.3rem;color:var(--steel);vertical-align:top;text-align:right;">'+(t/60)+':00</td>';
-    for(var d=1;d<=5;d++){
-      if(skip[d]>0){skip[d]--;continue;}
-      var ev=null;
-      EVENTS.forEach(function(e){ if(e.day===d && m(e.start)===t) ev=e; });
-      if(ev){
-        var span=Math.max(1,Math.round((m(ev.end)-m(ev.start))/STEP));
-        skip[d]=span-1;
-        var meet=ev.type==="meet";
-        var col=meet?"#7eb8d4":"var(--gold-light)";
-        var bg=meet?"rgba(100,160,200,0.15)":"rgba(201,168,76,0.18)";
-        h+='<td rowspan="'+span+'" style="'+b+'padding:0.25rem 0.3rem;vertical-align:top;color:'+col+';background:'+bg+';">'+ev.title+'<br><span style="opacity:.75;">'+f(ev.start)+'–'+f(ev.end)+'</span></td>';
-      } else {
-        h+='<td style="'+b+'height:1.1rem;"></td>';
-      }
-    }
-    h+='</tr>';
-  }
+  var th='padding:0.4rem 0.5rem;text-align:left;color:var(--gold);border-bottom:1px solid var(--border);font-weight:400;letter-spacing:0.08em;text-transform:uppercase;';
+  var h='<thead><tr><th style="'+th+'">Day</th><th style="'+th+'">Time</th><th style="'+th+'">Course / Meeting</th></tr></thead><tbody>';
+  var list=EVENTS.slice().sort(function(a,b){return a.day-b.day||(a.start<b.start?-1:1);});
+  var prev=0;
+  list.forEach(function(e){
+    var c=e.type==="meet"?"#7eb8d4":"var(--cream-dim)";
+    var td='padding:0.4rem 0.5rem;border-bottom:1px solid rgba(201,168,76,0.12);vertical-align:top;';
+    h+='<tr><td style="'+td+'color:var(--gold);">'+(e.day!==prev?N[e.day]:'')+'</td>'
+     +'<td style="'+td+'color:'+c+';white-space:nowrap;">'+f(e.start)+'–'+f(e.end)+'</td>'
+     +'<td style="'+td+'color:'+c+';">'+e.title+'</td></tr>';
+    prev=e.day;
+  });
   h+='</tbody>';
   document.getElementById("mini-schedule").innerHTML=h;
 })();
