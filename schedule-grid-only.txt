@@ -1,0 +1,58 @@
+IZGARA (sadece dersi olan gunler)
+Kullanmak icin: index.html icinde hero-right'taki mevcut schedule kodunu sil, bunu yapistir.
+Veri: schedule-data.js
+(Bu ilk uc not satirini yapistirma. <div ile baslayan satirdan </script>'e kadar kopyala.)
+
+<div style="margin-top:1.8rem;padding-top:1.4rem;border-top:1px solid var(--border);">
+  <p class="research-label">Weekly Schedule for Fall 2026</p>
+  <table id="mini-schedule" style="width:100%;table-layout:fixed;border-collapse:collapse;font-family:'JetBrains Mono',monospace;"></table>
+</div>
+<script src="schedule-data.js"></script>
+<script>
+(function(){
+  var D=["","MON","TUE","WED","THU","FRI"];
+  function m(t){var p=t.split(":");return parseInt(p[0],10)*60+parseInt(p[1],10);}
+  function f(t){var p=t.split(":");return parseInt(p[0],10)+":"+p[1];}
+  var tbl=document.getElementById("mini-schedule");
+
+  var days=[];
+  for(var d=1;d<=5;d++){ if(EVENTS.some(function(e){return e.day===d;})) days.push(d); }
+  var S=Math.floor(Math.min.apply(null,EVENTS.map(function(e){return m(e.start);}))/60)*60;
+  var E=Math.ceil(Math.max.apply(null,EVENTS.map(function(e){return m(e.end);}))/60)*60;
+
+  function grid(){
+    var STEP=30, rows=(E-S)/STEP;
+    var b='border:1px solid rgba(201,168,76,0.18);';
+    var skip={};
+    days.forEach(function(d){skip[d]=0;});
+    var h='<thead><tr><th style="'+b+'width:2.8rem;"></th>';
+    days.forEach(function(d){ h+='<th style="'+b+'padding:0.4rem 0.2rem;color:var(--gold);font-weight:400;letter-spacing:0.08em;font-size:0.75rem;">'+D[d]+'</th>'; });
+    h+='</tr></thead><tbody>';
+    for(var r=0;r<rows;r++){
+      var t=S+r*STEP;
+      h+='<tr>';
+      if(r%2===0) h+='<td rowspan="2" style="'+b+'padding:0.15rem 0.3rem;color:var(--steel);vertical-align:top;text-align:right;font-size:0.7rem;">'+(t/60)+':00</td>';
+      days.forEach(function(d){
+        if(skip[d]>0){skip[d]--;return;}
+        var ev=null;
+        EVENTS.forEach(function(e){ if(e.day===d && m(e.start)===t) ev=e; });
+        if(ev){
+          var span=Math.max(1,Math.round((m(ev.end)-m(ev.start))/STEP));
+          skip[d]=span-1;
+          var meet=ev.type==="meet";
+          var col=meet?"#7eb8d4":"var(--gold-light)";
+          var bg=meet?"rgba(100,160,200,0.15)":"rgba(201,168,76,0.18)";
+          h+='<td rowspan="'+span+'" style="'+b+'padding:0.3rem 0.4rem;vertical-align:top;font-size:0.7rem;line-height:1.35;overflow-wrap:anywhere;word-break:break-word;color:'+col+';background:'+bg+';">'+ev.title+'<br><span style="opacity:.75;">'+f(ev.start)+'–'+f(ev.end)+'</span></td>';
+        } else {
+          h+='<td style="'+b+'height:1.3rem;"></td>';
+        }
+      });
+      h+='</tr>';
+    }
+    tbl.style.tableLayout="fixed";
+    tbl.innerHTML=h+'</tbody>';
+  }
+
+  grid();
+})();
+</script>
