@@ -3,7 +3,7 @@ Kullanmak istediginde: index.html icinde hero-right'taki mevcut schedule kodunu 
 Veri: schedule-data.js
 
 <div style="margin-top:1.8rem;padding-top:1.4rem;border-top:1px solid var(--border);">
-  <p class="research-label">Weekly Schedule</p>
+  <p class="research-label">Weekly Schedule for Fall 2027</p>
   <div style="overflow-x:auto;">
     <table id="mini-schedule" style="width:100%;table-layout:fixed;border-collapse:collapse;font-family:'JetBrains Mono',monospace;font-size:0.6rem;line-height:1.35;"></table>
   </div>
