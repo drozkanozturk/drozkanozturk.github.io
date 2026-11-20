@@ -374,7 +374,7 @@
         </div>
     
                <!-- WEEKLY SCHEDULE TABLE (veri: schedule-data.js) -->
-   <div style="margin-top:1.8rem;padding-top:1.4rem;border-top:1px solid var(--border);">
+  <div style="margin-top:1.8rem;padding-top:1.4rem;border-top:1px solid var(--border);">
   <p class="research-label">Weekly Schedule for Fall 2026</p>
   <table id="mini-schedule" style="width:100%;border-collapse:collapse;font-family:'JetBrains Mono',monospace;font-size:0.72rem;line-height:1.5;"></table>
 </div>
@@ -383,13 +383,13 @@
 (function(){
   var N=["","Mon","Tue","Wed","Thu","Fri"];
   function f(t){var p=t.split(":");return parseInt(p[0],10)+":"+p[1];}
-  var th='padding:0.4rem 0.5rem;text-align:left;color:var(--gold);border-bottom:1px solid var(--border);font-weight:400;letter-spacing:0.08em;text-transform:uppercase;';
+  var th='font-size:0.9rem;padding:0.4rem 0.5rem;text-align:left;color:var(--gold);border-bottom:1px solid var(--border);font-weight:400;letter-spacing:0.08em;text-transform:uppercase;';
   var h='<thead><tr><th style="'+th+'">Day</th><th style="'+th+'">Time</th><th style="'+th+'">Course / Meeting</th></tr></thead><tbody>';
   var list=EVENTS.slice().sort(function(a,b){return a.day-b.day||(a.start<b.start?-1:1);});
   var prev=0;
   list.forEach(function(e){
     var c=e.type==="meet"?"#7eb8d4":"var(--cream-dim)";
-    var td='padding:0.4rem 0.5rem;border-bottom:1px solid rgba(201,168,76,0.12);vertical-align:top;';
+    var td=font-size:0.9rem;'padding:0.4rem 0.5rem;border-bottom:1px solid rgba(201,168,76,0.12);vertical-align:top;';
     h+='<tr><td style="'+td+'color:var(--gold);">'+(e.day!==prev?N[e.day]:'')+'</td>'
      +'<td style="'+td+'color:'+c+';white-space:nowrap;">'+f(e.start)+'–'+f(e.end)+'</td>'
      +'<td style="'+td+'color:'+c+';">'+e.title+'</td></tr>';
