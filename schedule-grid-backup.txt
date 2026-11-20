@@ -1,4 +1,4 @@
-ISGARA (GRID) YEDEK KODU
+IZGARA (GRID) YEDEK KODU
 Kullanmak istediginde: index.html icinde hero-right'taki mevcut schedule kodunu sil, bunu yapistir.
 Veri: schedule-data.js
 
