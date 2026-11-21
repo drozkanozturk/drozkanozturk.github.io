@@ -362,6 +362,8 @@
     #latest-news .ln-text:hover { color: var(--gold-light); }
     .latest-more { display: inline-block; margin-top: 0.6rem; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); text-decoration: none; }
     .latest-more:hover { color: var(--gold-light); }
+        /* ── Keep the large Δ in the first screen (not behind the calendar) ── */
+    #hero::after { top: 50vh; }
   </style>
 </head>
 <body>
