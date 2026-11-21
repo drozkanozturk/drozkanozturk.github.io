@@ -351,6 +351,17 @@
       .hero-text > div[style*="line-height:2"] { margin-top: 1.1rem !important; padding-top: 1.1rem !important; line-height: 1.85 !important; }
       .pf-icons { margin-top: 1rem; }
     }
+        /* ── LATEST NEWS box (right column of the hero) ── */
+    .hero-right { min-width: 0; }
+    .hero-latest { margin-top: 1.8rem; }
+    .hero-latest .research-label { margin-bottom: 0.3rem; }
+    #latest-news { list-style: none; }
+    #latest-news li { display: flex; align-items: baseline; gap: 1rem; padding: 0.55rem 0; border-bottom: 1px solid var(--border); }
+    #latest-news .ln-date { flex: none; width: 7.8rem; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; letter-spacing: 0.06em; color: var(--gold); white-space: nowrap; }
+    #latest-news .ln-text { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: var(--cream-dim); text-decoration: none; font-size: 0.95rem; }
+    #latest-news .ln-text:hover { color: var(--gold-light); }
+    .latest-more { display: inline-block; margin-top: 0.6rem; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); text-decoration: none; }
+    .latest-more:hover { color: var(--gold-light); }
   </style>
 </head>
 <body>
@@ -416,7 +427,12 @@
       <div class="stat"><span class="stat-num">15+</span><span class="stat-label">Conferences</span></div>
       <div class="stat"><span class="stat-num">25+</span><span class="stat-label">Seminars</span></div>
         </div>
-    
+        <!-- LATEST NEWS: filled automatically with the first 2 items of the News section -->
+    <div class="hero-latest">
+      <p class="research-label">Latest News</p>
+      <ul id="latest-news"></ul>
+      <a class="latest-more" href="#news">All news ↓</a>
+    </div>
 
     
     </div>
@@ -1170,6 +1186,24 @@
   }
   type();
 </script>
-
+<script>
+/* Latest News: copies the first 2 news items (date + text, without photo/PDF links) into the hero */
+document.addEventListener('DOMContentLoaded', function () {
+  var box = document.getElementById('latest-news');
+  if (!box) return;
+  var items = document.querySelectorAll('#news .news-item');
+  for (var i = 0; i < Math.min(2, items.length); i++) {
+    var date = items[i].querySelector('.news-date'), content = items[i].querySelector('.news-content');
+    if (!date || !content) continue;
+    var c = content.cloneNode(true);
+    c.querySelectorAll('a').forEach(function (a) { if (/📷|📄|🔗/.test(a.textContent)) a.remove(); });
+    var text = c.textContent.replace(/·/g, ' ').replace(/\s+/g, ' ').trim();
+    var li = document.createElement('li');
+    var d = document.createElement('span'); d.className = 'ln-date'; d.textContent = date.textContent.trim();
+    var t = document.createElement('a'); t.className = 'ln-text'; t.href = '#news'; t.textContent = text;
+    li.appendChild(d); li.appendChild(t); box.appendChild(li);
+  }
+});
+</script>
 </body>
 </html>
