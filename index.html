@@ -38,16 +38,18 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Serif+4:ital,wght@0,300;0,400;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
   <style>
     :root {
-      --navy:       #0a0f1e;
-      --navy-mid:   #111827;
-      --navy-light: #1e2d45;
-      --gold:       #c9a84c;
-      --gold-light: #e8c97a;
-      --cream:      #f0ead8;
-      --cream-dim:  #c8bfa8;
-      --steel:      #8294a8;
+      --navy:       #1B2A47;   /* main background (navy)              */
+      --navy-alt:   #16233D;   /* alternate band                      */
+      --navy-dark:  #101A30;   /* menu bar and footer                 */
+      --navy-mid:   rgba(255,255,255,0.04);  /* cards and boxes     */
+      --navy-light: #24365A;
+      --gold:       #F2A65A;   /* accent (orange)                     */
+      --gold-light: #FFC58F;   /* accent on hover / links             */
+      --cream:      #E7EBF1;   /* main text                           */
+      --cream-dim:  #C3CCDA;   /* secondary text                      */
+      --steel:      #95A3BA;   /* small grey-blue text                */
       --white:      #ffffff;
-      --border:     rgba(201,168,76,0.25);
+      --border:     rgba(255,255,255,0.12);
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -81,7 +83,7 @@
       justify-content: space-between;
       align-items: center;
       padding: 1.1rem 3rem;
-      background: rgba(10,15,30,0.88);
+      background: rgba(16,26,48,0.94);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
     }
@@ -134,7 +136,7 @@
       right: -2rem; top: 50%;
       transform: translateY(-50%);
       font-size: 32rem;
-      color: rgba(201,168,76,0.03);
+      color: rgba(242,166,90,0.03);
       font-family: 'Playfair Display', serif;
       pointer-events: none;
       line-height: 1;
@@ -197,7 +199,7 @@
     }
     .research-tags { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 2rem; }
     .tag {
-      background: rgba(201,168,76,0.08); border: 1px solid var(--border);
+      background: rgba(242,166,90,0.08); border: 1px solid var(--border);
       color: var(--cream-dim); font-family: 'JetBrains Mono', monospace;
       font-size: 0.85rem; padding: 0.35rem 0.8rem; border-radius: 2px;
     }
@@ -229,7 +231,7 @@
     .about-text p { margin-bottom: 1.2rem; color: var(--cream-dim); font-size: 1rem; }
     .edu-block { background: var(--navy-mid); border: 1px solid var(--border); border-left: 3px solid var(--gold); padding: 1.5rem; }
     .edu-block h4 { font-family: 'Playfair Display', serif; font-size: 0.85rem; color: var(--gold); letter-spacing: 0.05em; margin-bottom: 1rem; text-transform: uppercase; }
-    .edu-item { margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(201,168,76,0.1); }
+    .edu-item { margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(242,166,90,0.1); }
     .edu-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
     .edu-degree { font-size: 0.95rem; color: var(--cream); display: block; }
     .edu-school { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: var(--steel); }
@@ -238,8 +240,8 @@
 
     /* ── NEWS ── */
     .news-list { display: flex; flex-direction: column; }
-    .news-item { display: grid; grid-template-columns: 140px 1fr; gap: 2rem; padding: 1.5rem 0; border-bottom: 1px solid rgba(201,168,76,0.1); }
-    .news-item:first-child { border-top: 1px solid rgba(201,168,76,0.1); }
+    .news-item { display: grid; grid-template-columns: 140px 1fr; gap: 2rem; padding: 1.5rem 0; border-bottom: 1px solid rgba(242,166,90,0.1); }
+    .news-item:first-child { border-top: 1px solid rgba(242,166,90,0.1); }
     .news-date { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--gold); letter-spacing: 0.08em; padding-top: 0.2rem; }
     .news-content { font-size: 1rem; color: var(--cream-dim); }
     .news-content a { color: var(--gold-light); text-decoration: none; border-bottom: 1px solid var(--border); }
@@ -256,9 +258,9 @@
     /* ── CONFERENCES ── */
     .conf-item {
       display: grid; grid-template-columns: 100px 1fr; gap: 2rem;
-      padding: 1.8rem 0; border-bottom: 1px solid rgba(201,168,76,0.1);
+      padding: 1.8rem 0; border-bottom: 1px solid rgba(242,166,90,0.1);
     }
-    .conf-item:first-child { border-top: 1px solid rgba(201,168,76,0.1); }
+    .conf-item:first-child { border-top: 1px solid rgba(242,166,90,0.1); }
     .conf-date { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--gold); letter-spacing: 0.06em; line-height: 1.5; padding-top: 0.2rem; }
     .conf-name { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-style: italic; color: var(--white); margin-bottom: 0.3rem; }
     .conf-location { font-family: 'JetBrains Mono', monospace; font-size: 0.66rem; color: var(--steel); letter-spacing: 0.05em; margin-bottom: 0.5rem; }
@@ -269,12 +271,12 @@
       font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase;
       padding: 0.2rem 0.6rem; border-radius: 2px; margin-bottom: 0.5rem;
     }
-    .badge-invited { background: rgba(201,168,76,0.15); color: var(--gold); border: 1px solid var(--border); }
+    .badge-invited { background: rgba(242,166,90,0.15); color: var(--gold); border: 1px solid var(--border); }
     .badge-organizer { background: rgba(100,160,200,0.1); color: #7eb8d4; border: 1px solid rgba(100,160,200,0.2); }
 
     /* ── SEMINARS ── */
-    .seminar-item { display: grid; grid-template-columns: 140px 1fr; gap: 2rem; padding: 1.1rem 0; border-bottom: 1px solid rgba(201,168,76,0.08); }
-    .seminar-item:first-child { border-top: 1px solid rgba(201,168,76,0.1); }
+    .seminar-item { display: grid; grid-template-columns: 140px 1fr; gap: 2rem; padding: 1.1rem 0; border-bottom: 1px solid rgba(242,166,90,0.08); }
+    .seminar-item:first-child { border-top: 1px solid rgba(242,166,90,0.1); }
     .seminar-date { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--gold); letter-spacing: 0.06em; padding-top: 0.1rem; }
     .seminar-title { font-size: 1rem; color: var(--cream-dim); font-style: italic; }
     .seminar-note { font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; color: var(--steel); margin-top: 0.2rem; letter-spacing: 0.05em; }
@@ -303,10 +305,43 @@
       .about-grid, .contact-grid { grid-template-columns: 1fr; }
       .section-divider { margin: 0 1.5rem; }
       .news-item, .conf-item, .seminar-item { grid-template-columns: 1fr; gap: 0.3rem; }
-      .-grid { grid-template-columns: repeat(2, 1fr) !important; }
+      .collaborators-grid { grid-template-columns: repeat(2, 1fr) !important; }
       .hero-contact { padding-left: 1rem !important; }
     }
     #hero { align-items: flex-start !important; }
+
+    /* ── COLOR BANDS: each section has a full-width background ── */
+    section { box-shadow: 0 0 0 100vmax var(--band); clip-path: inset(0 -100vmax); }
+    #about, #research, #awards, #seminars { --band: var(--navy-alt); background: var(--navy-alt); }
+    #news, #teaching, #conferences       { --band: var(--navy);     background: var(--navy); }
+    .section-divider { display: none; }
+    footer { background: var(--navy-dark); border-top: none; }
+
+    /* ── EMAILS with envelope icons, and the icon row (CV, Scholar, ORCID, ...) ── */
+    .mail-row { display: flex; align-items: center; gap: 0.6rem; }
+    .mail-row svg { flex: none; width: 17px; height: 17px; color: var(--steel); }
+    .mail-row a { color: var(--gold); text-decoration: none; }
+    .mail-row a:hover { color: var(--gold-light); }
+    .pf-icons { list-style: none; display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 1.8rem; margin-left: -0.6rem; opacity: 0; animation: fadeUp 0.8s 0.9s forwards; }
+    .pf-icons a { display: inline-flex; align-items: center; justify-content: center; width: 46px; height: 46px; color: var(--gold); border-radius: 6px; text-decoration: none; transition: background 0.2s, color 0.2s; }
+    .pf-icons a:hover { color: var(--gold-light); background: rgba(255,255,255,0.05); }
+    .pf-icons svg { width: 28px; height: 28px; display: block; }
+    .pf-cv { font: 700 21px/1 'Helvetica Neue', Arial, sans-serif; letter-spacing: 0.02em; }
+
+    /* ── WEEKLY SCHEDULE: full width under the hero (built from schedule-data.js) ── */
+    .hero-schedule { grid-column: 1 / -1; min-width: 0; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border); opacity: 0; animation: fadeUp 0.8s 1.1s forwards; }
+    .schedule-scroll { overflow-x: auto; }
+    .schedule { display: grid; min-width: 600px; border-top: 1px solid rgba(255,255,255,.09); border-left: 1px solid rgba(255,255,255,.09); font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; }
+    .schedule .head { background: rgba(255,255,255,.04); color: var(--gold); text-align: center; padding: 0.6rem 0.3rem; letter-spacing: 0.06em; border-right: 1px solid rgba(255,255,255,.09); border-bottom: 1px solid rgba(255,255,255,.09); }
+    .schedule .hour { color: var(--steel); font-size: 0.78rem; padding: 0.15rem 0.5rem; text-align: right; border-right: 1px solid rgba(255,255,255,.09); border-bottom: 1px solid rgba(255,255,255,.09); }
+    .schedule .cell { border-right: 1px solid rgba(255,255,255,.09); border-bottom: 1px solid rgba(255,255,255,.09); }
+    .schedule .event { margin: 2px 3px; padding: 0.25rem 0.55rem; border-radius: 4px; overflow: hidden; line-height: 1.3; display: flex; flex-direction: column; gap: 1px; z-index: 1; }
+    .schedule .event b { font-weight: 500; font-size: 0.8rem; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+    .schedule .event span { font-size: 0.72rem; opacity: 0.85; white-space: nowrap; }
+    .event.class { background: rgba(242,166,90,.16); border-left: 3px solid #F2A65A; color: #FFDDB8; }
+    .event.meet  { background: rgba(127,176,232,.16); border-left: 3px solid #7FB0E8; color: #D3E5FA; }
+    .legend { display: flex; flex-wrap: wrap; gap: 0.4rem 1.4rem; margin-top: 0.8rem; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--steel); }
+    .legend i { display: inline-block; width: 13px; height: 13px; border-radius: 3px; vertical-align: -2px; margin-right: 0.45rem; }
    
   </style>
 </head>
@@ -342,21 +377,18 @@
   <span style="color:var(--gold);flex-shrink:0;min-width:1.2em;">⌖</span>
   <span style="color:var(--cream-dim);">Department of Mathematics, Faculty of Arts &amp; Sciences<br>Giresun University · Giresun, Türkiye</span>
 </div>
-  <div>✉ <a href="mailto:drozkanozturk&#64;outlook.com" style="color:var(--cream-dim);text-decoration:none;">drozkanozturk&#64;outlook.com</a></div>
-  <div>✉ <a href="mailto:ozkan.ozturk&#64;giresun.edu.tr" style="color:var(--cream-dim);text-decoration:none;">ozkan.ozturk&#64;giresun.edu.tr</a></div>
+  <div class="mail-row"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3 6.5l9 6.4 9-6.4" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><a href="mailto:drozkanozturk&#64;outlook.com">drozkanozturk&#64;outlook.com</a></div>
+  <div class="mail-row"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3 6.5l9 6.4 9-6.4" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><a href="mailto:ozkan.ozturk&#64;giresun.edu.tr">ozkan.ozturk&#64;giresun.edu.tr</a></div>
   </div>
-    <div class="hero-buttons">
-      <a class="btn btn-primary" href="cv.pdf" target="_blank">Download CV</a>
-  
-    </div>
-    
-    <div class="hero-social">
-      <a class="social-link" href="https://scholar.google.com/citations?hl=en&user=UpbBI10AAAAJ" target="_blank">Scholar</a>
-      <a class="social-link" href="https://orcid.org/0000-0001-6657-7409" target="_blank">ORCID</a>
-      <a class="social-link" href="https://www.researchgate.net/profile/Ozkan-Ozturk-2" target="_blank">ResearchGate</a>
-      <a class="social-link" href="https://www.linkedin.com/in/drozkanozturk" target="_blank">LinkedIn</a>
-      <a class="social-link" href="https://www.youtube.com/@drozkanozturk" target="_blank">YouTube</a>
-    </div>
+    <!-- ICONS: CV, Google Scholar, ORCID, ResearchGate, LinkedIn, YouTube -->
+    <ul class="pf-icons">
+      <li><a href="cv.pdf" target="_blank" title="CV" aria-label="CV"><span class="pf-cv">CV</span></a></li>
+      <li><a href="https://scholar.google.com/citations?hl=en&amp;user=UpbBI10AAAAJ" target="_blank" title="Google Scholar" aria-label="Google Scholar"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3 1 9l11 6 9-4.9V17h2V9L12 3zM5.5 12.6V16c0 1.7 2.9 3 6.5 3s6.5-1.3 6.5-3v-3.4L12 16l-6.5-3.4z"/></svg></a></li>
+      <li><a href="https://orcid.org/0000-0001-6657-7409" target="_blank" title="ORCID" aria-label="ORCID"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="currentColor"/><text x="12" y="16.2" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" font-weight="700" fill="#1B2A47">iD</text></svg></a></li>
+      <li><a href="https://www.researchgate.net/profile/Ozkan-Ozturk-2" target="_blank" title="ResearchGate" aria-label="ResearchGate"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="1.5" y="1.5" width="21" height="21" rx="4" fill="currentColor"/><text x="12" y="16.3" text-anchor="middle" font-family="Arial,sans-serif" font-size="10.5" font-weight="700" fill="#1B2A47">RG</text></svg></a></li>
+      <li><a href="https://www.linkedin.com/in/drozkanozturk" target="_blank" title="LinkedIn" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="1.5" y="1.5" width="21" height="21" rx="4" fill="currentColor"/><text x="12" y="17" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#1B2A47">in</text></svg></a></li>
+      <li><a href="https://www.youtube.com/@drozkanozturk" target="_blank" title="YouTube" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="1" y="4.5" width="22" height="15" rx="4.5" fill="currentColor"/><path d="M10 8.6v6.8l5.8-3.4z" fill="#1B2A47"/></svg></a></li>
+    </ul>
   </div>
 
   <div class="hero-right">
@@ -376,62 +408,60 @@
       <div class="stat"><span class="stat-num">25+</span><span class="stat-label">Seminars</span></div>
         </div>
     
-               <!-- WEEKLY SCHEDULE TABLE (veri: schedule-data.js) -->
-  <div style="margin-top:1.8rem;padding-top:1.4rem;border-top:1px solid var(--border);">
-  <p class="research-label">Weekly Schedule for Fall 2026</p>
-  <table id="mini-schedule" style="width:100%;table-layout:fixed;border-collapse:collapse;font-family:'JetBrains Mono',monospace;"></table>
-</div>
-<script src="schedule-data.js"></script>
-<script>
-(function(){
-  var D=["","MON","TUE","WED","THU","FRI"];
-  function m(t){var p=t.split(":");return parseInt(p[0],10)*60+parseInt(p[1],10);}
-  function f(t){var p=t.split(":");return parseInt(p[0],10)+":"+p[1];}
-  var tbl=document.getElementById("mini-schedule");
 
-  var days=[];
-  for(var d=1;d<=5;d++){ if(EVENTS.some(function(e){return e.day===d;})) days.push(d); }
-  var S=Math.floor(Math.min.apply(null,EVENTS.map(function(e){return m(e.start);}))/60)*60;
-  var E=Math.ceil(Math.max.apply(null,EVENTS.map(function(e){return m(e.end);}))/60)*60;
-
-  function grid(){
-    var STEP=30, rows=(E-S)/STEP;
-    var b='border:1px solid rgba(201,168,76,0.18);';
-    var skip={};
-    days.forEach(function(d){skip[d]=0;});
-    var h='<thead><tr><th style="'+b+'width:2.8rem;"></th>';
-    days.forEach(function(d){ h+='<th style="'+b+'padding:0.4rem 0.2rem;color:var(--gold);font-weight:400;letter-spacing:0.08em;font-size:0.75rem;">'+D[d]+'</th>'; });
-    h+='</tr></thead><tbody>';
-    for(var r=0;r<rows;r++){
-      var t=S+r*STEP;
-      h+='<tr>';
-      if(r%2===0) h+='<td rowspan="2" style="'+b+'padding:0.15rem 0.3rem;color:var(--steel);vertical-align:top;text-align:right;font-size:0.7rem;">'+(t/60)+':00</td>';
-      days.forEach(function(d){
-        if(skip[d]>0){skip[d]--;return;}
-        var ev=null;
-        EVENTS.forEach(function(e){ if(e.day===d && m(e.start)===t) ev=e; });
-        if(ev){
-          var span=Math.max(1,Math.round((m(ev.end)-m(ev.start))/STEP));
-          skip[d]=span-1;
-          var meet=ev.type==="meet";
-          var col=meet?"#7eb8d4":"var(--gold-light)";
-          var bg=meet?"rgba(100,160,200,0.15)":"rgba(201,168,76,0.18)";
-          h+='<td rowspan="'+span+'" style="'+b+'padding:0.3rem 0.4rem;vertical-align:top;font-size:0.7rem;line-height:1.35;overflow-wrap:anywhere;word-break:break-word;color:'+col+';background:'+bg+';">'+ev.title+'<br><span style="opacity:.75;">'+f(ev.start)+'–'+f(ev.end)+'</span></td>';
-        } else {
-          h+='<td style="'+b+'height:1.3rem;"></td>';
-        }
-      });
-      h+='</tr>';
-    }
-    tbl.style.tableLayout="fixed";
-    tbl.innerHTML=h+'</tbody>';
-  }
-
-  grid();
-})();
-</script>
     
     </div>
+  <!-- WEEKLY SCHEDULE (data: schedule-data.js) - full width at the bottom of the hero -->
+  <div class="hero-schedule">
+    <p class="research-label">Weekly Schedule for Fall 2026</p>
+    <div class="schedule-scroll"><div class="schedule" id="schedule" aria-label="Weekly schedule"></div></div>
+    <div class="legend">
+      <span><i style="background:rgba(242,166,90,.16);border:1px solid #F2A65A"></i>Class</span>
+      <span><i style="background:rgba(127,176,232,.16);border:1px solid #7FB0E8"></i>Meeting</span>
+    </div>
+  </div>
+<script src="schedule-data.js"></script>
+<script>
+(function () {
+  var box = document.getElementById('schedule');
+  if (!box) return;
+  var list = (typeof EVENTS !== 'undefined' && Array.isArray(EVENTS)) ? EVENTS : [];
+  if (!list.length) { box.style.display = 'block'; box.textContent = 'Schedule will be posted soon.'; return; }
+  var DAY = {1: 'Monday', 2: 'Tuesday', 3: 'Wednesday', 4: 'Thursday', 5: 'Friday', 6: 'Saturday', 7: 'Sunday'};
+  var SLOT = 30, ROW_H = 28;
+  function toMin(s) { var p = String(s).split(':'); return (+p[0]) * 60 + (+(p[1] || 0)); }
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+  var days = [];
+  list.forEach(function (e) { if (days.indexOf(e.day) < 0) days.push(e.day); });
+  days.sort(function (a, b) { return a - b; });
+  var lo = Math.floor(Math.min.apply(null, list.map(function (e) { return toMin(e.start); })) / 60) * 60;
+  var hi = Math.ceil(Math.max.apply(null, list.map(function (e) { return toMin(e.end); })) / 60) * 60;
+  var rows = (hi - lo) / SLOT;
+  box.style.gridTemplateColumns = '64px repeat(' + days.length + ', minmax(120px, 1fr))';
+  box.style.gridTemplateRows = 'auto repeat(' + rows + ', ' + ROW_H + 'px)';
+  function add(cls, col, row, span, text) {
+    var d = document.createElement('div');
+    d.className = cls; d.style.gridColumn = col; d.style.gridRow = row + ' / span ' + span;
+    if (text) d.textContent = text;
+    box.appendChild(d); return d;
+  }
+  add('head', 1, 1, 1, '');
+  days.forEach(function (d, i) { add('head', i + 2, 1, 1, DAY[d] || ('Day ' + d)); });
+  for (var t = lo; t < hi; t += 60) {
+    add('hour', 1, 2 + (t - lo) / SLOT, 60 / SLOT, pad(Math.floor(t / 60)) + ':00');
+    for (var i = 0; i < days.length; i++) add('cell', i + 2, 2 + (t - lo) / SLOT, 60 / SLOT, '');
+  }
+  list.forEach(function (e) {
+    var s = toMin(e.start), en = toMin(e.end);
+    var ev = add('event ' + (e.type === 'meet' ? 'meet' : 'class'), days.indexOf(e.day) + 2,
+                 2 + Math.round((s - lo) / SLOT), Math.max(1, Math.round((en - s) / SLOT)), '');
+    var b = document.createElement('b'); b.textContent = e.title;
+    var sp = document.createElement('span'); sp.textContent = e.start + '–' + e.end;
+    ev.appendChild(b); ev.appendChild(sp);
+    ev.title = e.title + ' (' + e.start + '–' + e.end + ')';
+  });
+})();
+</script>
 </div>
 
 <div class="section-divider"></div>
@@ -876,7 +906,7 @@
   <div class="conf-item">
     <div class="conf-date">Apr 2026</div>
     <div>
-      <div class="conf-name"><a https://coml26.utia.cas.cz/" target="_blank" style="color:var(--white);text-decoration:none;">InterCoML Conference - NextGen Synergy: Control Theory & Machine Learning</a></div>
+      <div class="conf-name"><a href="https://coml26.utia.cas.cz/" target="_blank" style="color:var(--white);text-decoration:none;">InterCoML Conference - NextGen Synergy: Control Theory & Machine Learning</a></div>
       <div class="conf-location">Prague, Czechia</div>
       <div class="conf-role">Bring control theory and machine learning into a productive and sustained dialogue</div>
       <div class="conf-talk">Talk: Control of Dynamical Systems on Time Scales: Bridging Continuous and Discrete Learning Frameworks</div>
