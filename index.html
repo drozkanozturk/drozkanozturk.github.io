@@ -11,21 +11,21 @@
   </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Dr. Özkan Öztürk | Mathematics</title>
+  <title>Prof. Özkan Öztürk | Mathematics</title>
   
 <meta name="description" content="Dr. Özkan Öztürk - Full Professor of Mathematics at Giresun University. Research on differential equations, time scales theory, oscillation theory, and control of unmanned vehicles.">
 <meta name="keywords" content="Özkan Öztürk, Ozkan Ozturk, giresun, giresun üniversitesi, matematik, zaman skalası, mathematics, differential equations, time scales, Giresun University, oscillation theory, control theory, mathematical biology, time scales calculus, dynamic equations, Missouri S&T">
 <meta name="author" content="Dr. Özkan Öztürk">
 <meta name="robots" content="index, follow">
 
-<meta property="og:title" content="Dr. Özkan Öztürk | Mathematics">
+<meta property="og:title" content="Prof. Özkan Öztürk | Mathematics">
 <meta property="og:description" content="Full Professor of Mathematics at Giresun University. Research on differential equations, time scales theory, and mathematical biology.">
 <meta property="og:url" content="https://www.drozkanozturk.com">
 <meta property="og:image" content="https://www.drozkanozturk.com/ozkanozturk2.png">
 <meta property="og:type" content="website">
 
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Dr. Özkan Öztürk | Mathematics">
+<meta name="twitter:title" content="Prof. Özkan Öztürk | Mathematics">
 <meta name="twitter:description" content="Full Professor of Mathematics at Giresun University.">
 <meta name="twitter:image" content="https://www.drozkanozturk.com/ozkanozturk2.png">
 
@@ -312,8 +312,8 @@
 
     /* ── COLOR BANDS: each section has a full-width background ── */
     section { box-shadow: 0 0 0 100vmax var(--band); clip-path: inset(0 -100vmax); }
-    #about, #research, #awards, #seminars { --band: var(--navy-alt); background: var(--navy-alt); }
-    #news, #teaching, #conferences       { --band: var(--navy);     background: var(--navy); }
+    #news, #projects, #awards, #seminars { --band: var(--navy-alt); background: var(--navy-alt); }
+    #research, #teaching, #conferences   { --band: var(--navy);     background: var(--navy); }
     .section-divider { display: none; }
     footer { background: var(--navy-dark); border-top: none; }
 
@@ -351,7 +351,7 @@
       .hero-text > div[style*="line-height:2"] { margin-top: 1.1rem !important; padding-top: 1.1rem !important; line-height: 1.85 !important; }
       .pf-icons { margin-top: 1rem; }
     }
-        /* ── LATEST NEWS box (right column of the hero) ── */
+    /* ── LATEST NEWS (right column of the hero), its last line lines up with the icons ── */
     .hero-right { min-width: 0; }
     .hero-latest { margin-top: 1.8rem; }
     .hero-latest .research-label { margin-bottom: 0.3rem; }
@@ -362,8 +362,40 @@
     #latest-news .ln-text:hover { color: var(--gold-light); }
     .latest-more { display: inline-block; margin-top: 0.6rem; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); text-decoration: none; }
     .latest-more:hover { color: var(--gold-light); }
+    @media (min-width: 961px) {
+      .hero-right { align-self: stretch; display: flex; flex-direction: column; max-width: 700px; }
+      .hero-latest { margin-top: auto; padding-top: 1.5rem; }
+      #latest-news li { padding: 0.45rem 0; }
+      .latest-more { margin-top: 0.4rem; }
+      .hero-right .hero-edu { padding: 0.85rem 1.3rem; }
+      .hero-right .hero-edu .edu-item { margin-bottom: 0.35rem; padding-bottom: 0.35rem; }
+      .hero-right .hero-edu .edu-item:last-child { margin-bottom: 0; padding-bottom: 0; }
+    }
+    /* ── MENU: tighter on mid-size screens, one swipeable row on phones ── */
+    @media (min-width: 961px) and (max-width: 1240px) {
+      nav { padding: 1.1rem 2rem; }
+      .nav-logo { min-width: 150px; }
+      .nav-links { gap: 1.1rem; }
+      .nav-links a { font-size: 0.74rem; letter-spacing: 0.06em; }
+    }
+    @media (max-width: 960px) {
+      nav { flex-wrap: wrap; row-gap: 0.5rem; }
+      .nav-links { width: 100%; flex-wrap: nowrap; justify-content: flex-start; overflow-x: auto; gap: 1.3rem; padding-bottom: 0.2rem; scrollbar-width: none; -webkit-overflow-scrolling: touch;
+                   -webkit-mask-image: linear-gradient(90deg, #000 85%, transparent); mask-image: linear-gradient(90deg, #000 85%, transparent); }
+      .nav-links::-webkit-scrollbar { display: none; }
+      .nav-links a { font-size: 0.68rem; }
+      #hero { padding-top: 8rem; }
+    }
         /* ── Keep the large Δ in the first screen (not behind the calendar) ── */
     #hero::after { top: 50vh; }
+    /* ── EDUCATION box in the hero (compact) ── */
+    .hero-edu { padding: 1rem 1.3rem; }
+    .hero-edu h4 { margin-bottom: 0.5rem; }
+    .hero-edu .edu-item { margin-bottom: 0.45rem; padding-bottom: 0.45rem; }
+    .hero-edu .edu-item:last-child { margin-bottom: 0; padding-bottom: 0; }
+    .hero-edu .edu-degree { line-height: 1.4; }
+    .hero-edu .edu-school { display: block; line-height: 1.4; margin-top: 0.1rem; }
+    .hero-edu .edu-icon svg { margin-top: 0.1rem; }
   </style>
 </head>
 <body>
@@ -373,9 +405,9 @@
   <a class="nav-logo" href="#hero" id="typewriter"></a>
   <ul class="nav-links">
     <li><a href="#hero">Home</a></li>
-    <li><a href="#about">About</a></li>
     <li><a href="#news">News</a></li>
     <li><a href="#research">Research</a></li>
+    <li><a href="#projects">Projects</a></li>
     <li><a href="#teaching">Teaching</a></li>
     <li><a href="#awards">Awards</a></li>
     <li><a href="#conferences">Conferences</a></li>
@@ -388,9 +420,9 @@
   <div class="hero-text">
     <img src="ozkanozturk2.png" alt=" Öztürk" style="width:160px;height:160px;object-fit:cover;border-radius:50%;border:3px solid var(--gold);margin-bottom:1.5rem;display:block;">
     <p class="hero-eyebrow">Educator · Researcher · Explorer </p>
-    <h1 class="hero-name">Prof. Özkan Öztürk</h1>
+    <h1 class="hero-name">Özkan Öztürk</h1>
    
-    <p class="hero-affil">Missouri University of Science &amp; Technology · Ph.D. Mathematics</p>
+    <p class="hero-affil">Full Professor of Mathematics</p>
     
    <div style="margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--border);font-family:'JetBrains Mono',monospace;font-size:0.9rem;color:var(--gold);line-height:2;">
   <div style="letter-spacing:0.15em;text-transform:uppercase;margin-bottom:0.5rem;">Contact</div>
@@ -421,12 +453,14 @@
       <span class="tag">Mathematical Biology</span>
       <span class="tag">Infectious Disease Modeling</span>
     </div>
-    <div class="stat-row">
-      <div class="stat"><span class="stat-num">20+</span><span class="stat-label">Publications</span></div>
-      <div class="stat"><span class="stat-num">15+</span><span class="stat-label">Conferences</span></div>
-      <div class="stat"><span class="stat-num">25+</span><span class="stat-label">Seminars</span></div>
-        </div>
-        <!-- LATEST NEWS: filled automatically with the first 2 items of the News section -->
+    <!-- EDUCATION -->
+    <div class="edu-block hero-edu">
+      <h4>Education</h4>
+      <div class="edu-item edu-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3 1 9l11 6 9-4.9V17h2V9L12 3zM5.5 12.6V16c0 1.7 2.9 3 6.5 3s6.5-1.3 6.5-3v-3.4L12 16l-6.5-3.4z"/></svg><div><span class="edu-degree">Ph.D. in Mathematics</span><span class="edu-school">Missouri University of Science &amp; Technology · May 2016</span></div></div>
+      <div class="edu-item edu-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3 1 9l11 6 9-4.9V17h2V9L12 3zM5.5 12.6V16c0 1.7 2.9 3 6.5 3s6.5-1.3 6.5-3v-3.4L12 16l-6.5-3.4z"/></svg><div><span class="edu-degree">M.S. in Electrical Engineering</span><span class="edu-school">Missouri University of Science &amp; Technology · May 2016</span></div></div>
+      <div class="edu-item edu-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3 1 9l11 6 9-4.9V17h2V9L12 3zM5.5 12.6V16c0 1.7 2.9 3 6.5 3s6.5-1.3 6.5-3v-3.4L12 16l-6.5-3.4z"/></svg><div><span class="edu-degree">M.S. in Applied Mathematics</span><span class="edu-school">Missouri University of Science &amp; Technology · May 2009</span></div></div>
+    </div>
+    <!-- LATEST NEWS: filled automatically with the first 2 items of the News section -->
     <div class="hero-latest">
       <p class="research-label">Latest News</p>
       <ul id="latest-news"></ul>
@@ -490,32 +524,9 @@
 
 <div class="section-divider"></div>
 
-<!-- ABOUT -->
-<section id="about">
-  <div class="section-header"><span class="section-num">01</span><h2 class="section-title">About</h2><div class="section-line"></div></div>
-  <div class="about-grid">
-    <div class="about-text">
-     <p>I am a Full Professor of Mathematics at Giresun University. My research is on differential and difference equations and the calculus of time scales, which unifies continuous and discrete dynamical systems in a single framework.</p>
-     <p>On the applied side, I build and analyze models of infectious diseases such as monkeypox, HIV, tuberculosis, and HPV, and I develop control strategies, including conformable and fractional-order approaches, for unmanned aerial and ground vehicles such as quadrotors and wheeled mobile robots. On the theoretical side, I study the oscillation and asymptotic behavior of solutions of nonlinear dynamic equations and systems, including Emden–Fowler type equations, often using fixed point methods.</p>
-     <p>I work with collaborators in the United States and Europe and am a member of the COST Action InterCoML (CA24136) on control theory and machine learning. I teach mathematics and engineering courses at the undergraduate and graduate levels and supervise graduate research.</p>
-    </div>
-    <div>
-      <div class="edu-block">
-         <h4>Education</h4>
-        <div class="edu-item edu-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3 1 9l11 6 9-4.9V17h2V9L12 3zM5.5 12.6V16c0 1.7 2.9 3 6.5 3s6.5-1.3 6.5-3v-3.4L12 16l-6.5-3.4z"/></svg><div><span class="edu-degree">Ph.D. in Mathematics</span><span class="edu-school">Missouri University of Science &amp; Technology · May 2016</span></div></div>
-        <div class="edu-item edu-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3 1 9l11 6 9-4.9V17h2V9L12 3zM5.5 12.6V16c0 1.7 2.9 3 6.5 3s6.5-1.3 6.5-3v-3.4L12 16l-6.5-3.4z"/></svg><div><span class="edu-degree">M.S. in Electrical Engineering</span><span class="edu-school">Missouri University of Science &amp; Technology · May 2016</span></div></div>
-        <div class="edu-item edu-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3 1 9l11 6 9-4.9V17h2V9L12 3zM5.5 12.6V16c0 1.7 2.9 3 6.5 3s6.5-1.3 6.5-3v-3.4L12 16l-6.5-3.4z"/></svg><div><span class="edu-degree">M.S. in Applied Mathematics</span><span class="edu-school">Missouri University of Science &amp; Technology · May 2009</span></div></div>
-        
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="section-divider"></div>
-
 <!-- NEWS -->
 <section id="news">
-  <div class="section-header"><span class="section-num">02</span><h2 class="section-title">News &amp; Events</h2><div class="section-line"></div></div>
+  <div class="section-header"><span class="section-num">01</span><h2 class="section-title">News &amp; Events</h2><div class="section-line"></div></div>
   <div class="news-list">
       <div class="news-item">
       <span class="news-date">Apr 27–30, 2026</span>
@@ -553,7 +564,7 @@
 
 <!-- RESEARCH -->
 <section id="research">
-  <div class="section-header" style="margin-bottom:1rem;"><span class="section-num">03</span><h2 class="section-title">Research</h2><div class="section-line"></div></div>
+  <div class="section-header" style="margin-bottom:1rem;"><span class="section-num">02</span><h2 class="section-title">Research</h2><div class="section-line"></div></div>
   
 <!-- COLLABORATORS -->
 <div style="margin-bottom:3rem;">
@@ -818,6 +829,64 @@
 
   <div style="margin-top:2rem;">
     <a class="btn btn-outline" href="https://scholar.google.com/citations?hl=en&user=UpbBI10AAAAJ" target="_blank">View All on Google Scholar →</a>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-header"><span class="section-num">03</span><h2 class="section-title">Projects</h2><div class="section-line"></div></div>
+
+  <!-- RESEARCH PROJECTS -->
+  <div style="margin-bottom:3.5rem;">
+  <p class="seminar-group-label">Research Projects</p>
+  <div class="conf-item">
+    <div class="conf-date">2018–2021</div>
+    <div>
+      <span class="conf-badge badge-invited">TÜBİTAK</span>
+      <div class="conf-name">Collaborative Strategies of Heterogeneous Robot Activity at Solving Agriculture Missions Controlled via Intuitive Human–Robot Interfaces</div>
+      <div class="conf-location">Funded by TÜBİTAK · Researcher</div>
+      <div class="conf-role">Total project budget: US$69,904 (at the time of award)</div>
+    </div>
+  </div>
+  </div>
+
+  <!-- COST ACTIONS -->
+  <div>
+  <p class="seminar-group-label">COST Actions · EU-funded research networks</p>
+  <div class="conf-item">
+    <div class="conf-date">2025–2029</div>
+    <div>
+      <span class="conf-badge badge-organizer">COST Action</span>
+      <div class="conf-name"><a href="https://www.cost.eu/actions/CA24136/" target="_blank" style="color:var(--white);text-decoration:none;">Interactions between Control Theory and Machine Learning (InterCoML)</a></div>
+      <div class="conf-location">CA24136 · Working Group Member · WG 1, 2, 5</div>
+    </div>
+  </div>
+  <div class="conf-item">
+    <div class="conf-date">2025–2029</div>
+    <div>
+      <span class="conf-badge badge-organizer">COST Action</span>
+      <div class="conf-name"><a href="https://www.cost.eu/actions/CA24104/" target="_blank" style="color:var(--white);text-decoration:none;">Stochastic Differential Equations: Computation, Inference, Applications (STOCHASTICA)</a></div>
+      <div class="conf-location">CA24104 · Working Group Member · WG 1, 2, 3, 5</div>
+    </div>
+  </div>
+  <div class="conf-item">
+    <div class="conf-date">2025–2029</div>
+    <div>
+      <span class="conf-badge badge-organizer">COST Action</span>
+      <div class="conf-name"><a href="https://www.cost.eu/actions/CA24133/" target="_blank" style="color:var(--white);text-decoration:none;">European Network for Animal Evolutionary Immunology: Interlinking Laboratory and Wildlife Infection Biology (EVIM-NET)</a></div>
+      <div class="conf-location">CA24133 · Working Group Member · WG 1, 3, 4, 5</div>
+    </div>
+  </div>
+  <div class="conf-item">
+    <div class="conf-date">2025–2029</div>
+    <div>
+      <span class="conf-badge badge-organizer">COST Action</span>
+      <div class="conf-name"><a href="https://www.cost.eu/actions/CA24140/" target="_blank" style="color:var(--white);text-decoration:none;">One Health Zoonotic Hepevirus Network (ONWARD)</a></div>
+      <div class="conf-location">CA24140 · Working Group Member · WG 1, 2, 3, 4</div>
+    </div>
+  </div>
   </div>
 </section>
 
