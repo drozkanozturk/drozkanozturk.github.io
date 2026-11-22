@@ -404,6 +404,11 @@
     .eg-deg { display: block; font-family: 'Playfair Display', serif; font-size: 1.9rem; line-height: 1.1; color: var(--gold); }
     .eg-field { display: block; margin-top: 0.45rem; font-size: 0.92rem; line-height: 1.35; color: var(--cream); }
     .eg-yr { display: block; margin-top: 0.3rem; font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; letter-spacing: 0.12em; color: var(--steel); }
+    .eg-top { flex-direction: column; gap: 0; padding: 0.45rem 0.8rem; }
+    .eg-name { display: flex; align-items: flex-start; justify-content: center; gap: 0.6rem; line-height: 1.3; }
+    .eg-name svg { flex: none; width: 20px; height: 20px; margin-top: 0.12em; color: var(--gold); }
+    .eg-loc { padding-left: calc(20px + 0.6rem); font-family: 'JetBrains Mono', monospace; font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--steel); }
+    .eg-cell { padding-top: 1.05rem; }
   </style>
 </head>
 <body>
@@ -464,7 +469,7 @@
         <!-- EDUCATION -->
     <p class="research-label">Education</p>
     <div class="eg">
-      <div class="eg-top"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3 1 9l11 6 9-4.9V17h2V9L12 3zM5.5 12.6V16c0 1.7 2.9 3 6.5 3s6.5-1.3 6.5-3v-3.4L12 16l-6.5-3.4z"/></svg><span>Missouri University of Science &amp; Technology</span></div>
+      <div class="eg-top"><div class="eg-name"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3 1 9l11 6 9-4.9V17h2V9L12 3zM5.5 12.6V16c0 1.7 2.9 3 6.5 3s6.5-1.3 6.5-3v-3.4L12 16l-6.5-3.4z"/></svg><span>Missouri University of Science and Technology</span></div><div class="eg-loc">Rolla, MO, USA</div></div>
       <div class="eg-cell"><span class="eg-deg">Ph.D.</span><span class="eg-field">Mathematics</span><span class="eg-yr">May 2016</span></div>
       <div class="eg-cell"><span class="eg-deg">M.S.</span><span class="eg-field">Electrical Engineering</span><span class="eg-yr">May 2016</span></div>
       <div class="eg-cell"><span class="eg-deg">M.S.</span><span class="eg-field">Applied Mathematics</span><span class="eg-yr">May 2011</span></div>
