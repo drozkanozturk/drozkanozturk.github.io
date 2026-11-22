@@ -18,10 +18,11 @@ const EVENTS = [
   { day:2, start:"17:30", end:"19:30", title:"Online Research Meeting with Tom and Nick", type:"meet" },
 
   { day:3, start:"08:00", end:"10:00", title:"Graduate Research", type:"class" },
+  { day:3, start:"10:00", end:"12:00", title:"Office Hours", type:"meet" },
    
   
-  { day:4, start:"17:30", end:"19:30", title:"Online Research Meeting with Nick and Dilara", type:"meet" },
+  { day:4, start:"17:30", end:"19:30", title:"Online Research Meeting with Nick and Dilara", type:"meet" }
    
-  { day:5, start:"10:30", end:"12:30", title:"Department Meeting", type:"meet" }
+
    
 ];
