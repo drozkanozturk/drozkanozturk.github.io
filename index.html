@@ -409,6 +409,14 @@
     .eg-name svg { flex: none; width: 20px; height: 20px; margin-top: 0.12em; color: var(--gold); }
     .eg-loc { padding-left: calc(20px + 0.6rem); font-family: 'JetBrains Mono', monospace; font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--steel); }
     .eg-cell { padding-top: 1.05rem; }
+
+        /* ── Room for three title lines under the name (computers only) ── */
+    @media (min-width: 961px) {
+      .hero-affil { line-height: 1.45; }
+      .hero-text > img { margin-bottom: 0.75rem !important; }
+      .hero-eyebrow { margin-bottom: 0.8rem; }
+      .hero-text > div[style*="line-height:2"] { margin-top: 0.8rem !important; padding-top: 0.8rem !important; }
+    }
   </style>
 </head>
 <body>
@@ -435,7 +443,7 @@
     <p class="hero-eyebrow">Educator · Researcher · Explorer </p>
     <h1 class="hero-name">Özkan Öztürk</h1>
    
-    <p class="hero-affil">Full Professor of Mathematics<br>Chair, Division of Applied Mathematics</p>
+    <p class="hero-affil">Full Professor of Mathematics<br>Vice Chair of the Department of Mathematics<br>Chair of the Division of Applied Mathematics</p>
     
    <div style="margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--border);font-family:'JetBrains Mono',monospace;font-size:0.9rem;color:var(--gold);line-height:2;">
   <div style="letter-spacing:0.15em;text-transform:uppercase;margin-bottom:0.5rem;">Contact</div>
